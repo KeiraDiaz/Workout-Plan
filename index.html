@@ -7,6 +7,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
+body.light {
+  --dark: #f5f5f0;
+  --mid: #eaeae4;
+  --card: #ffffff;
+  --border: #dcdcd4;
+  --muted: #999990;
+  --text: #1a1a2e;
+  --dim: #555560;
+}
   :root {
     --dark: #080810;
     --mid: #10101a;
@@ -349,6 +358,12 @@
   <div class="hero-tag">Brisbane · Cycle-Synced</div>
   <h1>4-Week <span>Calisthenics</span><br>Training Plan</h1>
   <p class="hero-sub">Back, upper body & legs. Beginner-friendly. Adjusted for each phase of your menstrual cycle.</p>
+  <button id="themeBtn" onclick="toggleTheme()" style="
+  position: absolute; top: 20px; right: 20px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 6px 14px;
+  font-family: 'Space Mono', monospace; font-size: 11px;
+  color: var(--dim); cursor: pointer;">🌙 dark</button>
 </div>
 
 <div style="max-width:700px;margin:20px auto 0;padding:0 16px;">
@@ -966,6 +981,17 @@ function toggleEx(key) {
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 render();
+
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light');
+  document.getElementById('themeBtn').textContent = isLight ? '🌑 dark' : '🌙 dark';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+// Restore on load
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+  document.getElementById('themeBtn').textContent = '🌑 dark';
+}
 </script>
 </body>
 </html>
