@@ -3,19 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4-Week Calisthenics Plan</title>
+<title>Cycle-Synced Calisthenics Plan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-body.light {
-  --dark: #f5f5f0;
-  --mid: #eaeae4;
-  --card: #ffffff;
-  --border: #dcdcd4;
-  --muted: #999990;
-  --text: #1a1a2e;
-  --dim: #555560;
-}
   :root {
     --dark: #080810;
     --mid: #10101a;
@@ -24,33 +15,59 @@ body.light {
     --muted: #4a4a6a;
     --text: #d0d0e8;
     --dim: #7070a0;
-
     --menstrual: #ff6b8a;
     --follicular: #a78bfa;
     --ovulation: #e8ff47;
     --luteal: #60c4fa;
     --late-luteal: #f97d6b;
+    --green: #39ff7a;
   }
+  body.light {
+    --dark: #f5f5f0;
+    --mid: #eaeae4;
+    --card: #ffffff;
+    --border: #dcdcd4;
+    --muted: #999990;
+    --text: #1a1a2e;
+    --dim: #555560;
+  }
+  body.light .phase-header { background: #f0f0ea; }
+  body.light .ex-card { background: #f8f8f3; border-color: #dcdcd4; }
+  body.light .ex-name { color: #1a1a2e; }
+  body.light .chip { background: #ebebea; border-color: #dcdcd4; }
+  body.light .ex-tip { color: #888; border-left-color: #dcdcd4; }
+  body.light .science-note-inner { background: #eeeee8; border-color: #dcdcd4; color: #555560; }
+  body.light .phase-banner-inner { background: #f0eef8 !important; border-color: #dcdcd4 !important; }
+  body.light .pb-desc { color: #555560; }
+  body.light .pb-tag { background: rgba(0,0,0,0.06); }
+  body.light .cycle-notice { background: #f5f0ee !important; color: #333 !important; border-color: #dcdcd4 !important; }
+  body.light .cn-label { color: #333 !important; }
+  body.light .rest-card { background: #fff; }
+  body.light .rc-note { color: #777; }
+  body.light .rest-tips { background: #fff; }
+  body.light .rest-tips li { color: #555560; }
+  body.light .session-notes { background: #fff; }
+  body.light .sn-item { color: #666; }
+  body.light .day-header { background: #fff; }
+  body.light .phase-body { background: #fff; }
+  body.light .day-pill { background: #f0f0ea; }
+  body.light .day-pill.active { background: #e0e0f4; }
+  body.light .dp-num { color: #999; }
+  body.light .dh-day-num { color: #999; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--dark); color: var(--text); font-family: 'Space Mono', monospace; min-height: 100vh; overflow-x: hidden; }
 
-  body {
-    background: var(--dark);
-    color: var(--text);
-    font-family: 'Space Mono', monospace;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ── HERO ── */
+  /* HERO */
   .hero {
-    background: linear-gradient(160deg, #0d0d1a 0%, #080810 60%);
+    background: linear-gradient(160deg, var(--mid) 0%, var(--dark) 60%);
     border-bottom: 1px solid var(--border);
-    padding: 40px 20px 32px;
+    padding: 36px 20px 28px;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
+  body.light .hero { background: linear-gradient(160deg, #eaeaf4 0%, #f5f5f0 60%); }
   .hero::before {
     content: '';
     position: absolute;
@@ -60,845 +77,735 @@ body.light {
     background: radial-gradient(circle, #a78bfa18 0%, transparent 70%);
     pointer-events: none;
   }
-  .hero-tag {
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(22px, 5vw, 36px);
-    font-weight: 800;
-    color: #fff;
-    line-height: 1.1;
-    margin-bottom: 10px;
-  }
+  .hero-tag { font-size: 10px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(20px, 5vw, 32px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 8px; }
+  body.light .hero h1 { color: #1a1a2e; }
   .hero h1 span { color: var(--follicular); }
-  .hero-sub {
-    font-size: 11px;
-    color: var(--dim);
-    line-height: 1.6;
-    max-width: 380px;
-    margin: 0 auto 24px;
+  .hero-sub { font-size: 11px; color: var(--dim); line-height: 1.6; max-width: 360px; margin: 0 auto 20px; }
+  #themeBtn {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 5px 12px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    color: var(--dim); cursor: pointer;
   }
 
-  /* ── CYCLE LEGEND ── */
-  .cycle-legend {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 0 20px 8px;
+  /* CYCLE DATE PICKER */
+  .date-picker-wrap {
+    max-width: 700px; margin: 20px auto 0; padding: 0 16px;
   }
-  .legend-pill {
+  .date-picker-inner {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 5px 11px;
-    font-size: 10px;
-    color: var(--dim);
+    gap: 16px;
+    flex-wrap: wrap;
   }
-  .legend-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
+  .dp-label { font-size: 11px; color: var(--dim); flex: 1; min-width: 160px; line-height: 1.5; }
+  .dp-label strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 13px; }
+  #cycleStartInput {
+    background: var(--dark);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--text);
+    cursor: pointer;
   }
+  #cycleStartInput:focus { outline: none; border-color: var(--follicular); }
+  .today-btn {
+    background: transparent;
+    border: 1px solid var(--follicular);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--follicular);
+    cursor: pointer;
+  }
+  .today-btn:hover { background: #a78bfa22; }
 
-  /* ── SCIENCE NOTE ── */
+  /* SCIENCE NOTE */
   .science-note {
-    max-width: 640px;
-    margin: 0 auto 24px;
-    padding: 14px 16px;
-    background: #0d0d1a;
-    border: 1px solid #1e1e3a;
+    max-width: 700px; margin: 16px auto 0; padding: 0 16px;
+  }
+  .science-note-inner {
+    background: var(--mid);
+    border: 1px solid var(--border);
     border-radius: 10px;
+    padding: 12px 16px;
     font-size: 11px;
     color: var(--dim);
     line-height: 1.7;
   }
-  .science-note strong { color: var(--follicular); }
+  .science-note-inner strong { color: var(--follicular); }
 
-  /* ── WEEK TABS ── */
-  .week-tabs {
-    display: flex;
-    max-width: 700px;
-    margin: 0 auto 4px;
-    padding: 0 16px;
-    gap: 6px;
-    overflow-x: auto;
-    scrollbar-width: none;
+  /* CYCLE LEGEND */
+  .cycle-legend {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 6px; padding: 16px 16px 0; max-width: 700px; margin: 0 auto;
   }
-  .week-tabs::-webkit-scrollbar { display: none; }
-  .week-tab {
-    flex: 1;
-    min-width: 130px;
-    background: var(--card);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 10px 12px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s;
-    font-family: 'Space Mono', monospace;
+  .legend-pill {
+    display: flex; align-items: center; gap: 5px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 4px 10px;
+    font-size: 10px; color: var(--dim);
   }
-  .week-tab:hover { border-color: var(--muted); }
-  .week-tab.active { border-color: var(--follicular); background: #16162a; }
-  .week-tab .wt-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
-  .week-tab .wt-phase { font-size: 12px; font-weight: 700; }
-  .week-tab.active .wt-phase { color: #fff; }
-  .week-tab:not(.active) .wt-phase { color: var(--dim); }
-  .week-tab .wt-days { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 
-  /* ── PHASE BANNER ── */
-  .phase-banner {
-    max-width: 700px;
-    margin: 16px auto 16px;
-    padding: 0 16px;
-  }
+  /* PHASE BANNER */
+  .phase-banner { max-width: 700px; margin: 16px auto 0; padding: 0 16px; }
   .phase-banner-inner {
-    border-radius: 14px;
-    padding: 18px 20px;
-    border: 1.5px solid;
-    position: relative;
-    overflow: hidden;
+    border-radius: 14px; padding: 16px 20px;
+    border: 1.5px solid; position: relative; overflow: hidden;
   }
-  .phase-banner-inner::before {
-    content: '';
-    position: absolute;
-    top: -30px; right: -30px;
-    width: 100px; height: 100px;
-    border-radius: 50%;
-    opacity: 0.12;
-  }
-  .pb-phase { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px; }
-  .pb-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .pb-phase { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px; }
+  .pb-title { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 5px; }
+  body.light .pb-title { color: #1a1a2e; }
   .pb-desc { font-size: 11px; color: var(--dim); line-height: 1.6; }
   .pb-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-  .pb-tag { font-size: 10px; padding: 3px 9px; border-radius: 20px; background: rgba(0,0,0,0.3); border: 1px solid; }
+  .pb-tag { font-size: 10px; padding: 2px 8px; border-radius: 20px; background: rgba(0,0,0,0.3); border: 1px solid; }
 
-  /* ── DAY STRIP ── */
-  .day-strip {
-    max-width: 700px;
-    margin: 0 auto 16px;
-    padding: 0 16px;
+  /* DAY LIST HEADER */
+  .day-list-header {
+    max-width: 700px; margin: 16px auto 0; padding: 0 16px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .dlh-label { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
+  .dlh-progress { font-size: 11px; color: var(--dim); }
+
+  /* DAY STRIP — vertical scrollable list */
+  .day-list-wrap {
+    max-width: 700px; margin: 10px auto 0; padding: 0 16px;
+  }
+  .day-list {
     display: flex;
-    gap: 6px;
     overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 4px;
     scrollbar-width: none;
   }
-  .day-strip::-webkit-scrollbar { display: none; }
-  .day-btn {
+  .day-list::-webkit-scrollbar { display: none; }
+  .day-pill {
     flex-shrink: 0;
-    width: 58px;
     background: var(--card);
     border: 1.5px solid var(--border);
     border-radius: 10px;
-    padding: 8px 4px;
+    padding: 8px 10px;
     cursor: pointer;
     text-align: center;
     transition: all 0.15s;
     font-family: 'Space Mono', monospace;
+    min-width: 64px;
+    position: relative;
   }
-  .day-btn:hover { border-color: var(--muted); }
-  .day-btn.active { background: #16162a; }
-  .day-btn .db-icon { font-size: 18px; }
-  .day-btn .db-day { font-size: 10px; font-weight: 700; margin-top: 3px; }
-  .day-btn .db-type { font-size: 9px; color: var(--muted); margin-top: 1px; }
-  .day-btn.done .db-icon::after { content: ' ✓'; font-size: 10px; color: #39ff7a; }
-
-  /* ── MAIN CONTENT ── */
-  .content {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 16px 60px;
+  .day-pill:hover { border-color: var(--muted); }
+  .day-pill.active { background: var(--mid); }
+  body.light .day-pill.active { background: #e0e0f0; }
+  .day-pill.today-marker::after {
+    content: '●';
+    position: absolute;
+    top: 4px; right: 5px;
+    font-size: 6px;
+    color: var(--green);
   }
+  .dp-num { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .dp-date { font-size: 10px; font-weight: 700; margin-top: 2px; }
+  .dp-icon { font-size: 16px; margin-top: 3px; }
+  .dp-phase-dot { width: 5px; height: 5px; border-radius: 50%; margin: 4px auto 0; }
 
-  /* ── REST CARD ── */
-  .rest-card {
+  /* MAIN CONTENT */
+  .content { max-width: 700px; margin: 0 auto; padding: 16px 16px 60px; }
+
+  /* DAY HEADER */
+  .day-header {
     background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px 20px;
-    text-align: center;
-    margin-bottom: 14px;
-  }
-  .rest-card .rc-icon { font-size: 44px; margin-bottom: 12px; }
-  .rest-card .rc-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--dim); margin-bottom: 8px; }
-  .rest-card .rc-note { font-size: 11px; color: var(--muted); line-height: 1.7; max-width: 320px; margin: 0 auto; }
-  .rest-tips { list-style: none; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
-  .rest-tips li { font-size: 11px; color: var(--dim); line-height: 1.6; padding: 5px 0; display: flex; gap: 8px; }
-  .rest-tips li::before { content: '›'; color: var(--muted); flex-shrink: 0; }
-
-  /* ── PHASE BLOCK ── */
-  .phase-block { margin-bottom: 10px; }
-  .phase-header {
-    width: 100%;
-    background: #0f0f1c;
     border: 1.5px solid var(--border);
-    border-radius: 12px;
-    padding: 13px 16px;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    text-align: left;
-    font-family: 'Space Mono', monospace;
-    transition: all 0.2s;
+    gap: 14px;
+  }
+  .dh-icon { font-size: 32px; }
+  .dh-info { flex: 1; }
+  .dh-day-num { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
+  .dh-label { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); }
+  .dh-date { font-size: 11px; color: var(--dim); margin-top: 2px; }
+  .dh-chips { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .dh-chip { font-size: 10px; padding: 2px 9px; border-radius: 20px; border: 1px solid; background: rgba(0,0,0,0.3); }
+
+  /* PROGRESS BAR */
+  .prog-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .prog-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .prog-fill { height: 100%; border-radius: 2px; transition: width 0.4s ease; }
+  .prog-text { font-size: 10px; color: var(--muted); white-space: nowrap; }
+
+  /* REST CARD */
+  .rest-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px 20px;
+    text-align: center; margin-bottom: 12px;
+  }
+  .rc-icon { font-size: 40px; margin-bottom: 10px; }
+  .rc-title { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--dim); margin-bottom: 6px; }
+  .rc-note { font-size: 11px; color: var(--muted); line-height: 1.7; max-width: 300px; margin: 0 auto; }
+  .rest-tips { list-style: none; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; margin-bottom: 14px; }
+  .rest-tips li { font-size: 11px; color: var(--dim); line-height: 1.6; padding: 4px 0; display: flex; gap: 8px; }
+  .rest-tips li::before { content: '›'; color: var(--muted); flex-shrink: 0; }
+
+  /* CYCLE NOTICE */
+  .cycle-notice { border-radius: 10px; padding: 11px 14px; margin-bottom: 12px; font-size: 11px; line-height: 1.6; border: 1px solid; }
+  .cn-label { font-weight: 700; display: block; margin-bottom: 3px; }
+
+  /* PHASE BLOCK */
+  .phase-block { margin-bottom: 8px; }
+  .phase-header {
+    width: 100%; background: var(--mid); border: 1.5px solid var(--border);
+    border-radius: 12px; padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer; text-align: left;
+    font-family: 'Space Mono', monospace; transition: all 0.2s;
   }
   .phase-header:hover { background: var(--card); }
   .phase-header.open { border-radius: 12px 12px 0 0; background: var(--card); }
-  .ph-icon { font-size: 18px; }
+  .ph-icon { font-size: 17px; }
   .ph-label { flex: 1; }
-  .ph-name { font-size: 13px; font-weight: 700; transition: color 0.2s; }
+  .ph-name { font-size: 13px; font-weight: 700; }
   .ph-meta { font-size: 10px; color: var(--muted); margin-top: 2px; }
-  .ph-arrow { color: var(--muted); font-size: 16px; transition: transform 0.2s; }
+  .ph-arrow { color: var(--muted); font-size: 15px; transition: transform 0.2s; }
   .phase-header.open .ph-arrow { transform: rotate(90deg); }
-
   .phase-body {
-    background: var(--card);
-    border: 1.5px solid var(--border);
-    border-top: none;
-    border-radius: 0 0 12px 12px;
-    padding: 4px 0 12px;
-    display: none;
+    background: var(--card); border: 1.5px solid var(--border);
+    border-top: none; border-radius: 0 0 12px 12px;
+    padding: 4px 0 10px; display: none;
   }
   .phase-body.open { display: block; }
 
-  /* ── EXERCISE CARD ── */
+  /* EXERCISE CARD */
   .ex-card {
-    margin: 10px 12px 0;
-    background: #0f0f1c;
-    border: 1px solid #1e1e2e;
-    border-radius: 10px;
-    padding: 13px 13px;
-    cursor: pointer;
-    transition: all 0.2s;
-    position: relative;
-    user-select: none;
+    margin: 8px 10px 0; background: var(--mid);
+    border: 1px solid #1e1e2e; border-radius: 10px;
+    padding: 12px; cursor: pointer; transition: all 0.2s;
+    position: relative; user-select: none;
   }
   .ex-card:hover { border-color: var(--muted); }
-  .ex-card.done { background: #0d1a0d; border-color: #39ff7a44; opacity: 0.65; }
+  .ex-card.done { background: #0d1a0d; border-color: #39ff7a44; opacity: 0.6; }
   .key-badge {
-    position: absolute; top: 9px; right: 9px;
+    position: absolute; top: 8px; right: 8px;
     font-size: 9px; padding: 2px 6px; border-radius: 4px;
     font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
   }
   .ex-row { display: flex; gap: 10px; align-items: flex-start; }
   .ex-check {
-    width: 20px; height: 20px; border-radius: 50%;
-    border: 2px solid #333;
-    background: transparent;
+    width: 19px; height: 19px; border-radius: 50%;
+    border: 2px solid #333; background: transparent;
     flex-shrink: 0; margin-top: 1px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700; color: #080810;
-    transition: all 0.2s;
+    font-size: 10px; font-weight: 700; color: #080810; transition: all 0.2s;
   }
-  .ex-card.done .ex-check { background: #39ff7a; border-color: #39ff7a; }
-  .ex-name {
-    font-size: 13px; font-weight: 700; color: #e0e0f0;
-    transition: all 0.2s;
-  }
+  .ex-card.done .ex-check { background: var(--green); border-color: var(--green); }
+  .ex-name { font-size: 13px; font-weight: 700; color: #e0e0f0; transition: all 0.2s; }
   .ex-card.done .ex-name { color: #555; text-decoration: line-through; }
-  .ex-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-  .chip {
-    font-size: 10px; padding: 2px 8px; border-radius: 5px;
-    background: #0a0a14; border: 1px solid #1e1e2e;
-    font-family: 'Space Mono', monospace;
-  }
+  .ex-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+  .chip { font-size: 10px; padding: 2px 7px; border-radius: 5px; background: var(--dark); border: 1px solid var(--border); font-family: 'Space Mono', monospace; }
   .chip.accent { border-color: currentColor; }
-  .ex-tip {
-    margin-top: 8px; font-size: 11px; color: #666;
-    line-height: 1.6; padding-left: 10px;
-    border-left: 2px solid #1e1e2e;
-  }
+  .ex-tip { margin-top: 7px; font-size: 11px; color: #666; line-height: 1.6; padding-left: 9px; border-left: 2px solid #1e1e2e; }
 
-  /* ── PROGRESS BAR ── */
-  .prog-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-  .prog-bar { flex: 1; height: 4px; background: #1e1e2e; border-radius: 2px; overflow: hidden; }
-  .prog-fill { height: 100%; border-radius: 2px; transition: width 0.4s ease; }
-  .prog-text { font-size: 10px; color: var(--muted); white-space: nowrap; }
-
-  /* ── CYCLE ADJUST NOTICE ── */
-  .cycle-notice {
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 14px;
-    font-size: 11px;
-    line-height: 1.6;
-    border: 1px solid;
+  /* SESSION NOTES */
+  .session-notes {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px; margin-top: 16px;
   }
-  .cn-label { font-weight: 700; display: block; margin-bottom: 4px; }
+  .sn-title { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+  .sn-item { display: flex; gap: 10px; font-size: 11px; color: #777; line-height: 1.5; margin-bottom: 8px; }
+  .sn-item:last-child { margin-bottom: 0; }
 
-  /* ── PARK NOTES ── */
-  .park-notes {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    margin-top: 20px;
+  /* LOCATION CHIP */
+  .loc-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10px; padding: 3px 10px; border-radius: 20px;
+    background: #141420; border: 1px solid #2a2a3a;
+    color: #888; margin-bottom: 12px;
   }
-  .pn-title { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
-  .pn-item { display: flex; gap: 10px; font-size: 11px; color: #777; line-height: 1.5; margin-bottom: 9px; }
-  .pn-item:last-child { margin-bottom: 0; }
 
   @media (max-width: 480px) {
-    .hero { padding: 30px 16px 24px; }
-    .week-tab { min-width: 110px; }
+    .hero { padding: 28px 14px 22px; }
+    .date-picker-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
   }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <div class="hero-tag">Brisbane · Cycle-Synced</div>
-  <h1>4-Week <span>Calisthenics</span><br>Training Plan</h1>
-  <p class="hero-sub">Back, upper body & legs. Beginner-friendly. Adjusted for each phase of your menstrual cycle.</p>
-  <button id="themeBtn" onclick="toggleTheme()" style="
-  position: absolute; top: 20px; right: 20px;
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 20px; padding: 6px 14px;
-  font-family: 'Space Mono', monospace; font-size: 11px;
-  color: var(--dim); cursor: pointer;">🌙 dark</button>
+  <button id="themeBtn" onclick="toggleTheme()">🌙 dark</button>
+  <div class="hero-tag">Cycle-Synced · 29-Day Plan</div>
+  <h1><span>Calisthenics</span> Training<br>Synced to Your Cycle</h1>
+  <p class="hero-sub">Back, upper body & legs. Beginner-friendly. Home sessions during menstrual & late luteal phases. Outdoor gym during follicular, ovulation & early luteal.</p>
 </div>
 
-<div style="max-width:700px;margin:20px auto 0;padding:0 16px;">
-  <div class="science-note">
-    <strong>About cycle syncing:</strong> Research suggests strength and output tend to be highest during the <strong>follicular & ovulation phases</strong> when oestrogen peaks, and may feel harder during the <strong>late luteal phase</strong> as progesterone rises and PMS symptoms can appear. This plan <em>adjusts volume and intensity accordingly</em> — not removes training. Every phase still trains. Listen to your body; these are guidelines, not rules.
+<div class="date-picker-wrap">
+  <div class="date-picker-inner">
+    <div class="dp-label">
+      <strong>When did your current cycle start?</strong>
+      Enter day 1 and the plan maps to your real calendar.
+    </div>
+    <input type="date" id="cycleStartInput" onchange="onDateChange()" />
+    <button class="today-btn" onclick="setToday()">Set today as day 1</button>
+  </div>
+</div>
+
+<div class="science-note">
+  <div class="science-note-inner">
+    <strong>About cycle syncing:</strong> Research suggests strength tends to peak during the <strong>follicular & ovulation phases</strong> when oestrogen is highest, and may feel harder during <strong>late luteal</strong> as progesterone rises. This plan adjusts volume accordingly — but every phase still trains. Listen to your body; these are guidelines, not rules.
   </div>
 </div>
 
 <div class="cycle-legend">
-  <div class="legend-pill"><div class="legend-dot" style="background:var(--menstrual)"></div>Menstrual (Days 1–5)</div>
-  <div class="legend-pill"><div class="legend-dot" style="background:var(--follicular)"></div>Follicular (Days 6–12)</div>
-  <div class="legend-pill"><div class="legend-dot" style="background:var(--ovulation)"></div>Ovulation (Days 13–15)</div>
-  <div class="legend-pill"><div class="legend-dot" style="background:var(--luteal)"></div>Early Luteal (Days 16–23)</div>
-  <div class="legend-pill"><div class="legend-dot" style="background:var(--late-luteal)"></div>Late Luteal (Days 24–28)</div>
+  <div class="legend-pill"><div class="legend-dot" style="background:var(--menstrual)"></div>Menstrual (1–5)</div>
+  <div class="legend-pill"><div class="legend-dot" style="background:var(--follicular)"></div>Follicular (6–13)</div>
+  <div class="legend-pill"><div class="legend-dot" style="background:var(--ovulation)"></div>Ovulation (14–16)</div>
+  <div class="legend-pill"><div class="legend-dot" style="background:var(--luteal)"></div>Early Luteal (17–24)</div>
+  <div class="legend-pill"><div class="legend-dot" style="background:var(--late-luteal)"></div>Late Luteal (25–29)</div>
 </div>
 
-<!-- WEEK TABS -->
-<div class="week-tabs" id="weekTabs"></div>
+<div class="phase-banner"><div id="phaseBanner"></div></div>
 
-<!-- PHASE BANNER -->
-<div class="phase-banner" id="phaseBanner"></div>
+<div class="day-list-header">
+  <span class="dlh-label">Your 29-day cycle</span>
+  <span class="dlh-progress" id="overallProgress"></span>
+</div>
+<div class="day-list-wrap"><div class="day-list" id="dayList"></div></div>
 
-<!-- DAY STRIP -->
-<div class="day-strip" id="dayStrip"></div>
-
-<!-- MAIN CONTENT -->
 <div class="content" id="mainContent"></div>
 
 <script>
-// ─── DATA ────────────────────────────────────────────────────────────────────
-
+// ── PHASE DEFINITIONS ────────────────────────────────────────────────────────
 const PHASES = {
-  menstrual: {
-    id: 'menstrual',
-    name: 'Menstrual Phase',
-    days: 'Days 1–5',
-    color: 'var(--menstrual)',
-    bg: '#1a0810',
-    borderColor: '#ff6b8a44',
-    tagBorder: '#ff6b8a66',
-    intent: 'Gentle movement. Honour your body.',
-    desc: 'Oestrogen and progesterone are at their lowest. Energy and strength may be reduced, and cramping is common. Focus on movement that feels good — not performance.',
-    tags: ['Low intensity', 'Mobility focus', 'Shorter sessions', 'Rest when needed'],
-    notice: 'This week is deliberately lower volume. Skip or shorten any session that feels wrong — that\'s not weakness, it\'s smart programming.',
-    noticeColor: 'var(--menstrual)',
-    noticeBg: '#1a080d',
-  },
-  follicular: {
-    id: 'follicular',
-    name: 'Follicular Phase',
-    days: 'Days 6–12',
-    color: 'var(--follicular)',
-    bg: '#110d1a',
-    borderColor: '#a78bfa44',
-    tagBorder: '#a78bfa66',
-    intent: 'Build. Push. Progress.',
-    desc: 'Oestrogen is rising — so is energy, strength, and mood. This is your best window for hard training and skill work. Volume goes up, rest periods shorten.',
-    tags: ['High intensity', 'Max volume week', 'Strength focus', 'Skill progressions'],
-    notice: 'Your body is primed. This is the week to push past previous rep counts and try harder progressions.',
-    noticeColor: 'var(--follicular)',
-    noticeBg: '#0f0d1a',
-  },
-  ovulation: {
-    id: 'ovulation',
-    name: 'Ovulation Phase',
-    days: 'Days 13–15',
-    color: 'var(--ovulation)',
-    bg: '#151500',
-    borderColor: '#e8ff4744',
-    tagBorder: '#e8ff4766',
-    intent: 'Peak power. Make it count.',
-    desc: 'Peak oestrogen. Strength, coordination and confidence are at their highest. Note: ligament laxity also peaks, so warm up thoroughly and don\'t rush into max efforts cold.',
-    tags: ['Peak output', 'Power work', 'Warm up well', 'Ligament care'],
-    notice: 'Joints are slightly more lax around ovulation due to oestrogen. Full warm-up is non-negotiable before any explosive work.',
-    noticeColor: 'var(--ovulation)',
-    noticeBg: '#141200',
-  },
-  earlyLuteal: {
-    id: 'earlyLuteal',
-    name: 'Early Luteal Phase',
-    days: 'Days 16–23',
-    color: 'var(--luteal)',
-    bg: '#0a1520',
-    borderColor: '#60c4fa44',
-    tagBorder: '#60c4fa66',
-    intent: 'Maintain. Stay consistent.',
-    desc: 'Progesterone rises while oestrogen dips slightly. Energy is reasonable — maintain your training but don\'t expect PRs. Good week for technique refinement.',
-    tags: ['Moderate intensity', 'Technique focus', 'Consistent volume', 'Form work'],
-    notice: 'Maintenance week. Same sessions, dialled-back intensity. Quality over quantity.',
-    noticeColor: 'var(--luteal)',
-    noticeBg: '#0a1015',
-  },
-  lateLuteal: {
-    id: 'lateLuteal',
-    name: 'Late Luteal Phase',
-    days: 'Days 24–28',
-    color: 'var(--late-luteal)',
-    bg: '#1a1008',
-    borderColor: '#f97d6b44',
-    tagBorder: '#f97d6b66',
-    intent: 'Recover & prepare.',
-    desc: 'Both hormones drop. PMS symptoms, fatigue, and mood changes may appear. Volume drops. Focus on mobility, easy movement, and preparing for the next cycle.',
-    tags: ['Lower volume', 'Mobility heavy', 'Shorter sessions', 'PMS-aware'],
-    notice: 'If symptoms are significant today, swap any session for the mobility version or full rest. Never push through pain.',
-    noticeColor: 'var(--late-luteal)',
-    noticeBg: '#1a0f08',
-  },
+  menstrual:   { name:'Menstrual',    color:'var(--menstrual)',  bg:'#1a0810', border:'#ff6b8a44', intent:'Gentle movement. Honour your body.',     desc:'Oestrogen and progesterone are at their lowest. Energy may be reduced and cramping common. Focus on movement that feels good, not performance.', tags:['Low intensity','Home sessions','Mobility focus','Rest freely'] },
+  follicular:  { name:'Follicular',   color:'var(--follicular)', bg:'#110d1a', border:'#a78bfa44', intent:'Build. Push. Progress.',                  desc:'Oestrogen rising — so is energy, strength, and mood. Best window for hard training and skill work. Volume goes up, rest periods shorten.',      tags:['High intensity','Max volume','Strength focus','Skill progressions'] },
+  ovulation:   { name:'Ovulation',    color:'var(--ovulation)',  bg:'#151500', border:'#e8ff4744', intent:'Peak power. Make it count.',              desc:'Peak oestrogen. Strength and coordination at their highest. Ligament laxity also peaks — warm up thoroughly before any explosive work.',          tags:['Peak output','Power work','Warm up well','Ligament care'] },
+  earlyLuteal: { name:'Early Luteal', color:'var(--luteal)',     bg:'#0a1520', border:'#60c4fa44', intent:'Maintain. Stay consistent.',             desc:'Progesterone rises while oestrogen dips. Energy is reasonable — maintain training but don\'t expect PRs. Good week for technique refinement.',    tags:['Moderate intensity','Technique focus','Consistent volume','Form work'] },
+  lateLuteal:  { name:'Late Luteal',  color:'var(--late-luteal)',bg:'#1a1008', border:'#f97d6b44', intent:'Recover & prepare.',                     desc:'Both hormones drop. PMS symptoms, fatigue, and mood shifts may appear. Volume drops. Focus on mobility and preparing for the next cycle.',        tags:['Lower volume','Home sessions','Mobility heavy','PMS-aware'] },
 };
 
-// Shared exercise library
+function phaseForDay(d) {
+  if (d <= 5)  return 'menstrual';
+  if (d <= 13) return 'follicular';
+  if (d <= 16) return 'ovulation';
+  if (d <= 24) return 'earlyLuteal';
+  return 'lateLuteal';
+}
+
+// ── EXERCISE LIBRARY ─────────────────────────────────────────────────────────
 const EX = {
-  // Warm-ups
-  shoulderCircles: { name:'Shoulder Circles', reps:'20 each direction', equip:'Open ground', tip:'Wide, slow circles — rotator cuff prep before any load.' },
-  armSwings: { name:'Arm Swings (cross-body)', reps:'20 reps', equip:'Open ground', tip:'Big controlled swings to open chest and rear delts.' },
-  deadHangPassive: { name:'Dead Hang', sets:'3×', reps:'15 sec', equip:'Chin-up bar', tip:'Passive hang. Grip primed, spine decompressed, shoulders warmed.' },
-  hipCircles: { name:'Hip Circles', reps:'15 each direction', equip:'Open ground', tip:'Hands on hips, big deliberate circles. Opens the hip joint before loading.' },
-  legSwings: { name:'Leg Swings (front/back)', reps:'15 each leg', equip:'Bar for balance', tip:'Swing one leg in a full arc — hip flexors and hamstrings wake up.' },
-  slowBodyweightSquat: { name:'Slow Bodyweight Squat', reps:'10 reps', equip:'Open ground', tip:'3 sec descent, 1 sec pause at bottom. Pure movement prep.' },
-  catCow: { name:'Cat-Cow Spinal Wave', reps:'10 reps', equip:'Soft-fall ground', tip:'Exhale on arch, inhale on curl. Primes the spine for everything.' },
-  jumpingJacks: { name:'Jumping Jacks', reps:'20 reps', equip:'Open ground', tip:'Blood flow only — keep it easy during menstrual warm-ups.' },
-  mobilityHipFlexor: { name:'Hip Flexor Stretch (lunge)', reps:'45 sec each side', equip:'Soft-fall ground', tip:'Low lunge, sink hips down. Long hold — this is a warm-up here.' },
-
-  // Pull
-  scapularPulls: { name:'Scapular Pulls', sets:'3×', reps:'10 reps', equip:'Chin-up bar', tip:'Hang, squeeze shoulder blades DOWN only. No elbow bend. Non-negotiable foundation.', key:true },
-  scapularPullsEasy: { name:'Scapular Pulls', sets:'2×', reps:'8 reps', equip:'Chin-up bar', tip:'Same as always — but only 2 sets today. Perfect reps over high volume.', key:true },
-  negativeChins: { name:'Negative Chin-Ups', sets:'3×', reps:'5 reps', equip:'Chin-up bar (underhand)', tip:'Jump to top, lower in 5 full seconds. The slow descent IS the exercise.', key:true },
-  negativeChinsPeak: { name:'Negative Chin-Ups', sets:'4×', reps:'6 reps', equip:'Chin-up bar (underhand)', tip:'Extra set this week — oestrogen is high. Aim for 6 seconds down.', key:true },
-  negativeChinsLight: { name:'Negative Chin-Ups', sets:'2×', reps:'4 reps', equip:'Chin-up bar (underhand)', tip:'Lighter load this week. 5 sec descent, full control — no rushing.', key:true },
-  australianRows: { name:'Australian Rows', sets:'3×', reps:'10–12 reps', equip:'Low bar / rings', tip:'Hang under a low bar, heels on ground, body straight. Pull chest to bar. More horizontal = harder.', key:true },
-  australianRowsPeak: { name:'Australian Rows', sets:'4×', reps:'12 reps', equip:'Low bar / rings', tip:'Peak week — extra set. Go as horizontal as possible on the last set.', key:true },
-  australianRowsLight: { name:'Australian Rows', sets:'2×', reps:'8 reps', equip:'Low bar / rings', tip:'Reduced load. Focus entirely on the squeeze at the top.', key:true },
-  hangingKneeRaises: { name:'Hanging Knee Raises', sets:'3×', reps:'10 reps', equip:'Chin-up bar', tip:'Hang and draw knees to chest. No swinging. Grip + core together.' },
-  hangingKneeRaisesLight: { name:'Hanging Knee Raises', sets:'2×', reps:'8 reps', equip:'Chin-up bar', tip:'2 sets only. Controlled — no kipping.' },
-  monkeyBars: { name:'Monkey Bars Traverse', sets:'3×', reps:'1 full pass', equip:'Monkey bars', tip:'Slow and controlled. If you can\'t finish a pass, go halfway and return.' },
-
-  // Push
-  inclinePushUps: { name:'Incline Push-Ups', sets:'3×', reps:'12–15 reps', equip:'Low bar', tip:'Hands on bar, elbows at 45°. Lower the bar as you get stronger.', key:true },
-  inclinePushUpsPeak: { name:'Incline Push-Ups', sets:'4×', reps:'15 reps', equip:'Low bar', tip:'4 sets this week. Last set, go to failure (clean reps only).', key:true },
-  inclinePushUpsLight: { name:'Incline Push-Ups', sets:'2×', reps:'10 reps', equip:'Low bar', tip:'2 sets. Keep bar higher if needed. Technique over reps.', key:true },
-  pushUps: { name:'Push-Ups', sets:'3×', reps:'8–10 reps', equip:'Soft-fall ground', tip:'Flat push-ups if inclines feel easy. Same 45° elbow angle — no flaring.' },
-  pushUpsPeak: { name:'Push-Ups', sets:'4×', reps:'10 reps', equip:'Soft-fall ground', tip:'Peak week — 4 sets. If 10 feels easy, slow down the descent.' },
-  dipHold: { name:'Dip Bar Support Hold', sets:'3×', reps:'25 sec', equip:'Dip bars', tip:'Arms locked out, body upright. Don\'t skip this — shoulder stability before dips.', key:true },
-  dipHoldPeak: { name:'Dip Bar Support Hold', sets:'3×', reps:'35 sec', equip:'Dip bars', tip:'Longer hold this week. Activate and squeeze at the top.', key:true },
-  dipHoldLight: { name:'Dip Bar Support Hold', sets:'2×', reps:'20 sec', equip:'Dip bars', tip:'Shorter hold, reduced sets. Still important — don\'t skip.' },
-  assistedDips: { name:'Assisted Dips (foot lightly on ground)', sets:'3×', reps:'8 reps', equip:'Dip bars', tip:'One foot barely grazing. Lower to parallel, press up. Lean forward for chest.' },
-  assistedDipsPeak: { name:'Assisted Dips (foot lightly on ground)', sets:'4×', reps:'10 reps', equip:'Dip bars', tip:'4 sets — push week. Try reducing foot assistance on last 2 reps of each set.' },
-  assistedDipsLight: { name:'Assisted Dips (foot lightly on ground)', sets:'2×', reps:'6 reps', equip:'Dip bars', tip:'Reduced. Perfect form only — no compensating with the foot.' },
-  pikePushUps: { name:'Pike Push-Ups', sets:'3×', reps:'8 reps', equip:'Soft-fall ground', tip:'Hips high, head toward ground between hands. Overhead press pattern.', key:true },
-  pikePushUpsPeak: { name:'Pike Push-Ups', sets:'4×', reps:'10 reps', equip:'Soft-fall ground', tip:'4 sets — best week for shoulder pressing. Head nearly touches ground.' },
-  pikePushUpsLight: { name:'Pike Push-Ups', sets:'2×', reps:'6 reps', equip:'Soft-fall ground', tip:'Reduced. Easy movement — no forcing.' },
-  battlingRopes: { name:'Battling Rope Slams', sets:'3×', reps:'20 sec / 20 rest', equip:'Battling ropes', tip:'Alternate arms, drive hard. Rear delts and upper back.' },
-  battlingRopesPeak: { name:'Battling Rope Slams', sets:'4×', reps:'25 sec / 15 rest', equip:'Battling ropes', tip:'Peak output. Shorter rest, longer work. Go hard.' },
-  battlingRopesLight: { name:'Battling Rope Waves', sets:'2×', reps:'15 sec / 25 rest', equip:'Battling ropes', tip:'Alternate wave pattern instead of slams — gentler on the body this week.' },
-
-  // Lower
-  bodyweightSquat: { name:'Bodyweight Squats', sets:'3×', reps:'15 reps', equip:'Soft-fall ground', tip:'Feet shoulder-width, toes slightly out. Full depth. Chest tall.', key:true },
-  bodyweightSquatPeak: { name:'Bodyweight Squats', sets:'4×', reps:'15 reps', equip:'Soft-fall ground', tip:'4 sets. Pause 2 sec at the bottom on every rep.', key:true },
-  bodyweightSquatLight: { name:'Slow Bodyweight Squats', sets:'2×', reps:'10 reps', equip:'Soft-fall ground', tip:'3 sec down, 2 sec pause, 2 sec up. Focus on the movement pattern.', key:true },
-  bulgarianSplit: { name:'Bulgarian Split Squats', sets:'3×', reps:'8 each leg', equip:'Low bar (rear foot)', tip:'Rear foot elevated. Front foot far enough forward so knee stays behind toes.', key:true },
-  bulgarianSplitPeak: { name:'Bulgarian Split Squats', sets:'4×', reps:'10 each leg', equip:'Low bar (rear foot)', tip:'Extra set, extra reps. Bottom pause optional — try 1 sec hold.', key:true },
-  bulgarianSplitLight: { name:'Split Squats (foot on ground)', sets:'2×', reps:'6 each leg', equip:'Open ground', tip:'No elevation — rear foot on ground only. Reduced demand, same pattern.' },
-  lateralSquat: { name:'Lateral Squats', sets:'3×', reps:'10 each side', equip:'Open ground', tip:'Wide stance, shift weight side to side bending one knee. Adductors and glutes.' },
-  hipHinge: { name:'Hip Hinge / Good Morning', sets:'3×', reps:'12 reps', equip:'Open ground', tip:'Soft knees, hinge forward at hips until hamstring tension, drive hips forward to stand.', key:true },
-  hipHingePeak: { name:'Hip Hinge / Good Morning', sets:'4×', reps:'15 reps', equip:'Open ground', tip:'4 sets. Slow eccentric — 3 sec forward, 1 sec back up.', key:true },
-  hipHingeLight: { name:'Hip Hinge (light)', sets:'2×', reps:'10 reps', equip:'Open ground', tip:'Gentle range. No forcing the hamstring stretch.' },
-  gluteBridge: { name:'Glute Bridge', sets:'3×', reps:'15 reps', equip:'Soft-fall ground', tip:'Hips up, 2 sec squeeze at top. Core braced throughout.' },
-  gluteBridgePeak: { name:'Glute Bridge', sets:'3×', reps:'20 reps', equip:'Soft-fall ground', tip:'More reps. Single-leg on the last set if 20 feels easy.' },
-  stepUps: { name:'Step-Ups', sets:'3×', reps:'10 each leg', equip:'Obstacle wall / platform', tip:'Drive through the heel of the elevated foot. Control the lowering.' },
-  calfRaises: { name:'Single-Leg Calf Raises', sets:'3×', reps:'15 each leg', equip:'Step edge', tip:'Full range — heel below step, full rise. Hold bar only for balance.' },
-  jumpSquats: { name:'Jump Squats', sets:'3×', reps:'10 reps', equip:'Soft-fall ground', tip:'Squat, explode up. Land softly with bent knees. Power development.', key:true },
-  jumpSquatsPeak: { name:'Jump Squats', sets:'4×', reps:'12 reps', equip:'Soft-fall ground', tip:'Peak power week. Land quietly, immediately reload.', key:true },
-  reverseLunges: { name:'Reverse Lunges', sets:'3×', reps:'10 each leg', equip:'Open ground', tip:'Step back, not forward — easier on the knee joint. Torso upright.' },
-  singleLegGlute: { name:'Single-Leg Glute Bridge', sets:'3×', reps:'12 each leg', equip:'Soft-fall ground', tip:'One leg extended, drive with the planted leg. Unilateral glute isolation.' },
-  balanceBeam: { name:'Balance Beam Walk', reps:'3 slow passes', equip:'Balance beam', tip:'Deliberate, arms out. Ankle stability and focus.' },
-
-  // Core
-  plank: { name:'Plank', sets:'3×', reps:'30–40 sec', equip:'Soft-fall ground', tip:'Forearms down. Squeeze glutes and abs. Hips neither sagging nor piking.' },
-  plankPeak: { name:'Plank', sets:'3×', reps:'45–60 sec', equip:'Soft-fall ground', tip:'Longer holds this week. Brace everything — treat it like a strength exercise.' },
-  plankLight: { name:'Plank', sets:'2×', reps:'20 sec', equip:'Soft-fall ground', tip:'Short hold — just activate the core without overloading.' },
-  superman: { name:'Superman Hold', sets:'3×', reps:'8 reps, 3 sec each', equip:'Soft-fall ground', tip:'Lift arms, chest, and legs simultaneously. Lower back strength for all pulling.' },
-  supermanLight: { name:'Superman Hold', sets:'2×', reps:'6 reps, 2 sec each', equip:'Soft-fall ground', tip:'Lighter — no forcing the range if your lower back is tight.' },
-  sidePlank: { name:'Side Plank', sets:'2× each side', reps:'25–35 sec', equip:'Soft-fall ground', tip:'Forearm down, body straight. Obliques and lateral stability.' },
-  sidePlankPeak: { name:'Side Plank', sets:'3× each side', reps:'40 sec', equip:'Soft-fall ground', tip:'3 sets each side this week. Hip slightly raised at the top.' },
-  burpees: { name:'Burpees', sets:'3×', reps:'8 reps', equip:'Soft-fall ground', tip:'Drop, push-up, jump up. Full body. Rest 60 sec between rounds.', key:true },
-  burpeesPeak: { name:'Burpees', sets:'4×', reps:'10 reps', equip:'Soft-fall ground', tip:'Peak week. 45 sec rest only between rounds.', key:true },
-
-  // ── HOME / YOGA exercises (no equipment) ──
-  // Yoga warm-ups
-  sunSaluteA: { name:'Sun Salutation A', reps:'3 rounds', equip:'Yoga mat / floor', tip:'Flow through mountain → forward fold → half-lift → plank → chaturanga (knees ok) → updog → downdog. 5 breaths in downdog. Warms the whole body gently.' },
-  childPoseWarmup: { name:'Child\'s Pose into Cat-Cow', reps:'8 rounds', equip:'Yoga mat / floor', tip:'Breathe slowly. Exhale into child\'s pose, inhale into cow. Wakes up the spine without loading it.' },
-  lyingTwist: { name:'Supine Twist', reps:'5 breaths each side', equip:'Yoga mat / floor', tip:'On your back, one knee drops across body. Let gravity do the work — no pulling. Great for lower back and hips before any movement.' },
-  ankleCircles: { name:'Ankle Circles + Toe Spreads', reps:'10 each direction per foot', equip:'Floor', tip:'Seated. Circle each ankle fully, then spread and scrunch toes. Grounding and joint prep.' },
-  // Yoga flows / poses
-  downwardDog: { name:'Downward Dog', sets:'3×', reps:'8 breaths', equip:'Yoga mat / floor', tip:'Hips high, heels pressing toward floor (they don\'t need to touch). Pedal the feet. Stretches hamstrings, calves, and shoulders simultaneously.', key:true },
-  warriorOne: { name:'Warrior I', sets:'2×', reps:'6 breaths each side', equip:'Yoga mat / floor', tip:'Front knee over ankle, back foot at 45°. Hips square forward, arms up. Long spine — don\'t collapse the lower back.' },
-  warriorTwo: { name:'Warrior II', sets:'2×', reps:'6 breaths each side', equip:'Yoga mat / floor', tip:'Wide stance, front knee bent over toes, arms open wide. Gaze over front fingers. Opens hips and builds leg endurance gently.' },
-  trianglePose: { name:'Triangle Pose', reps:'5 breaths each side', equip:'Yoga mat / floor', tip:'Legs wide, front toes forward, back toes at 45°. Reach front hand toward shin or floor. Side body stretch + hamstring opening.' },
-  bridgePose: { name:'Bridge Pose (Yoga)', sets:'3×', reps:'6 breaths each', equip:'Yoga mat / floor', tip:'Feet flat, knees bent. Drive hips up. Press into feet and shoulders. Hold rather than rep — more restorative than glute bridges.', key:true },
-  pigeonPoseFull: { name:'Pigeon Pose (full hold)', reps:'90 sec each side', equip:'Yoga mat / floor', tip:'Shin forward, hips square, fold over the front leg if comfortable. Deep glute and hip flexor release — one of the most effective poses for lower body tension.' },
-  seatForwardFold: { name:'Seated Forward Fold', reps:'8 breaths', equip:'Yoga mat / floor', tip:'Both legs extended, hinge from hips toward feet. Use a folded towel under knees if hamstrings are very tight. No forcing — breathe into the stretch.' },
-  legsUpWall: { name:'Legs Up the Wall', reps:'3–5 min', equip:'Wall / floor', tip:'Lie on your back, legs resting up a wall. Completely passive. Incredible for swollen legs, cramps, and the nervous system. The most restorative pose for the menstrual phase.' },
-  reclinedBoundAngle: { name:'Reclined Bound Angle (Supta Baddha)', reps:'2 min', equip:'Yoga mat / floor', tip:'On your back, soles of feet together, knees dropping open. Place hands on belly. Breathe slowly. Opens hips and calms the nervous system.' },
-  yinHipOpener: { name:'Yin Dragon Pose', reps:'2 min each side', equip:'Yoga mat / floor', tip:'Low lunge, both hands inside front foot. Option to lower the back knee. Completely surrender into gravity — no muscular effort. Hip flexors and groin.', key:true },
-  catCowFlow: { name:'Cat-Cow Flow', reps:'10 slow rounds', equip:'Yoga mat / floor', tip:'On all fours. Exhale: round spine toward ceiling (cat). Inhale: let belly drop, lift head and tailbone (cow). Syncs breath and movement. Great for cramps and lower back.' },
-  // Home strength (no equipment)
-  wallPushUps: { name:'Wall Push-Ups', sets:'3×', reps:'12 reps', equip:'Wall', tip:'Hands on wall at shoulder height. A step back makes it harder. Keep elbows at 45° — same form as incline push-ups, much lower demand.' },
-  kneelingPushUps: { name:'Kneeling Push-Ups', sets:'3×', reps:'10 reps', equip:'Yoga mat / floor', tip:'Hands wide, knees on floor. Same 45° elbow angle. Between wall push-ups and full push-ups in difficulty.' },
-  tableTopRow: { name:'Table-Top Row Hold', sets:'3×', reps:'6 breaths', equip:'Table / desk edge', tip:'Sit under a sturdy table, grip the edge overhand, pull your chest up toward it. Horizontal row using your own furniture. Mimics Australian rows.', key:true },
-  doorwayRow: { name:'Doorway Pull (Towel Row)', sets:'3×', reps:'8 reps', equip:'Doorframe + towel', tip:'Loop a towel around a doorframe at hip height, hold both ends, lean back, pull chest to door. Scapular retraction and lat activation at home.', key:true },
-  glassSliderLunge: { name:'Reverse Lunge', sets:'3×', reps:'8 each leg', equip:'Floor', tip:'Step back, lower the back knee toward floor. Same pattern as at the park — no elevation needed. Chest tall.' },
-  wallSit: { name:'Wall Sit', sets:'3×', reps:'30–45 sec', equip:'Wall', tip:'Back flat on wall, thighs parallel to floor. Isometric quad and glute hold. Low impact, surprisingly hard.', key:true },
-  gluteBridgeHome: { name:'Glute Bridge', sets:'3×', reps:'15 reps', equip:'Yoga mat / floor', tip:'Feet flat, drive hips up. 2 sec squeeze at top. Identical to the park version — just on your floor.' },
-  singleLegGluteHome: { name:'Single-Leg Glute Bridge', sets:'3×', reps:'10 each leg', equip:'Yoga mat / floor', tip:'One leg extended, drive with the grounded foot. Unilateral — more demanding and great for imbalances.' },
-  calfRaisesHome: { name:'Calf Raises (bilateral)', sets:'3×', reps:'20 reps', equip:'Step or floor', tip:'On a stair edge at home ideally. Full range — heel drops below, full rise. Both feet if fatigued.' },
-  bearCrawl: { name:'Bear Crawl (forward + back)', sets:'3×', reps:'10 steps each direction', equip:'Floor', tip:'Hands and feet on floor, knees hovering 2cm. Move opposite hand and foot. Full body stabiliser — shoulders, core, hips.', key:true },
-  deadBug: { name:'Dead Bug', sets:'3×', reps:'8 each side', equip:'Yoga mat / floor', tip:'On your back, arms up, knees at 90°. Slowly lower opposite arm and leg toward floor — keep lower back pressed down. Anti-extension core.', key:true },
-  plankShoulderTap: { name:'Plank Shoulder Taps', sets:'3×', reps:'10 taps each side', equip:'Yoga mat / floor', tip:'High plank. Tap opposite shoulder with each hand — resist rotation. Anti-rotation core stability.' },
-  sideLyingClamshell: { name:'Side-Lying Clamshell', sets:'2×', reps:'15 each side', equip:'Yoga mat / floor', tip:'On your side, knees bent, feet together. Rotate top knee up like a clamshell opening. Glute med activation.' },
-  // Home stretches
-  threadNeedle: { name:'Thread the Needle', reps:'5 breaths each side', equip:'Yoga mat / floor', tip:'On all fours, slide one arm under your body along the floor. Shoulder and thoracic rotation release. Great post-upper body.' },
-  doorwayChestStretch: { name:'Doorway Chest Stretch', reps:'30 sec each side', equip:'Doorframe', tip:'Arm at 90° on doorframe, rotate body away. Counteracts any pressing or internal rotation.' },
-  eagleArms: { name:'Eagle Arms (seated)', reps:'45 sec each side', equip:'Chair or floor', tip:'Cross one arm under the other at the elbow, lift elbows, separate hands. Deep rhomboid and rear delt stretch — excellent if you sit at a desk.' },
-  reclinedPigeon: { name:'Reclined Pigeon (Figure-Four)', reps:'90 sec each side', equip:'Yoga mat / floor', tip:'On your back, ankle on opposite thigh, gently press knee away. Same muscle group as pigeon but easier on the knee.' },
+  // Warm-ups – outdoor
+  shoulderCircles:    { name:'Shoulder Circles',            reps:'20 each direction', equip:'Open ground',           tip:'Wide, slow circles — rotator cuff prep before any load.' },
+  armSwings:          { name:'Arm Swings (cross-body)',      reps:'20 reps',           equip:'Open ground',           tip:'Big controlled swings to open chest and rear delts.' },
+  deadHangPassive:    { name:'Dead Hang',                   sets:'3×', reps:'15 sec', equip:'Pull-up bar',           tip:'Passive hang. Grip primed, spine decompressed, shoulders warmed.' },
+  hipCircles:         { name:'Hip Circles',                 reps:'15 each direction', equip:'Open ground',           tip:'Hands on hips, big deliberate circles. Opens the hip joint.' },
+  legSwings:          { name:'Leg Swings (front/back)',      reps:'15 each leg',       equip:'Bar for balance',       tip:'Swing one leg in a full arc — hip flexors and hamstrings.' },
+  slowSquat:          { name:'Slow Bodyweight Squat',        reps:'10 reps',           equip:'Open ground',           tip:'3 sec down, 1 sec pause. Pure movement prep.' },
+  catCow:             { name:'Cat-Cow Spinal Wave',          reps:'10 reps',           equip:'Ground',                tip:'Exhale on arch, inhale on curl. Primes the spine.' },
+  jumpingJacks:       { name:'Jumping Jacks',               reps:'20 reps',           equip:'Open ground',           tip:'Blood flow — keep it easy on warm-up.' },
+  // Warm-ups – home/yoga
+  sunSalute:          { name:'Sun Salutation A',             reps:'3 rounds',          equip:'Yoga mat / floor',      tip:'Mountain → fold → half-lift → plank → chaturanga → updog → downdog. 5 breaths in downdog.' },
+  childCatCow:        { name:'Child\'s Pose into Cat-Cow',   reps:'8 slow rounds',     equip:'Yoga mat / floor',      tip:'Exhale into child\'s pose, inhale into cow. Wakes the spine without loading it.' },
+  lyingTwist:         { name:'Supine Twist',                 reps:'5 breaths / side',  equip:'Yoga mat / floor',      tip:'On your back, one knee drops across body. Let gravity do the work.' },
+  ankleCircles:       { name:'Ankle Circles + Toe Spreads',  reps:'10 each / foot',    equip:'Floor',                 tip:'Circle each ankle fully then spread and scrunch toes. Joint prep.' },
+  // Pull – outdoor
+  scapularPulls:      { name:'Scapular Pulls',              sets:'3×', reps:'10 reps',    equip:'Pull-up bar',        tip:'Hang, squeeze shoulder blades DOWN only. No elbow bend. Foundation of all pulling.', key:true },
+  scapularPullsPeak:  { name:'Scapular Pulls',              sets:'4×', reps:'10 reps',    equip:'Pull-up bar',        tip:'Extra set at ovulation peak. Perfect form — slow and deliberate.', key:true },
+  negatives:          { name:'Negative Chin-Ups',           sets:'3×', reps:'5 reps',    equip:'Pull-up bar (underhand)', tip:'Jump to top, lower in 5 full seconds. The slow descent IS the exercise.', key:true },
+  negativesPeak:      { name:'Negative Chin-Ups',           sets:'4×', reps:'6 reps',    equip:'Pull-up bar (underhand)', tip:'Extra set — oestrogen is high. Aim for 6 seconds down.', key:true },
+  negativesLight:     { name:'Negative Chin-Ups',           sets:'3×', reps:'5 reps',    equip:'Pull-up bar (underhand)', tip:'Standard sets. Focus on the 5-sec descent — don\'t rush.', key:true },
+  rows:               { name:'Australian Rows',             sets:'3×', reps:'10–12 reps', equip:'Low bar / rings',   tip:'Hang under a bar, heels on ground, body straight. Pull chest to bar. More horizontal = harder.', key:true },
+  rowsPeak:           { name:'Australian Rows',             sets:'4×', reps:'12 reps',   equip:'Low bar / rings',    tip:'Peak week — extra set. Go as horizontal as possible on the last set.', key:true },
+  rowsMaintain:       { name:'Australian Rows',             sets:'3×', reps:'10 reps',   equip:'Low bar / rings',    tip:'Maintenance sets. Quality over speed — pause at the top.', key:true },
+  kneeRaises:         { name:'Hanging Knee Raises',         sets:'3×', reps:'10 reps',  equip:'Pull-up bar',         tip:'Hang and draw knees to chest. No swinging. Grip + core.' },
+  kneeRaisesPeak:     { name:'Hanging Knee Raises',         sets:'4×', reps:'10 reps',  equip:'Pull-up bar',         tip:'Extra set. Controlled — no kipping.' },
+  monkeyBars:         { name:'Monkey Bars Traverse',        sets:'3×', reps:'1 pass',   equip:'Monkey bars',         tip:'Slow and controlled. Go halfway and return if needed.' },
+  // Push – outdoor
+  inclinePush:        { name:'Incline Push-Ups',            sets:'3×', reps:'12–15 reps', equip:'Low bar',           tip:'Hands on bar, elbows at 45°. Lower the bar as you get stronger.', key:true },
+  inclinePushPeak:    { name:'Incline Push-Ups',            sets:'4×', reps:'15 reps',    equip:'Low bar',           tip:'4 sets. Last set to failure (clean reps only).', key:true },
+  pushUps:            { name:'Push-Ups',                    sets:'3×', reps:'8–10 reps',  equip:'Ground',            tip:'45° elbow angle. No flaring. Chest to ground.' },
+  pushUpsPeak:        { name:'Push-Ups',                    sets:'4×', reps:'10 reps',    equip:'Ground',            tip:'4 sets. If 10 feels easy, slow the descent.' },
+  dipHold:            { name:'Dip Bar Support Hold',        sets:'3×', reps:'25 sec',     equip:'Dip bars',          tip:'Arms locked, body upright. Shoulder stability before dips.', key:true },
+  dipHoldPeak:        { name:'Dip Bar Support Hold',        sets:'3×', reps:'35 sec',     equip:'Dip bars',          tip:'Longer hold. Activate and squeeze at the top.', key:true },
+  dips:               { name:'Assisted Dips',               sets:'3×', reps:'8 reps',     equip:'Dip bars',          tip:'One foot lightly on ground. Lower to parallel, press up. Lean forward for chest.' },
+  dipsPeak:           { name:'Assisted Dips',               sets:'4×', reps:'10 reps',    equip:'Dip bars',          tip:'4 sets. Reduce foot assistance on last 2 reps.' },
+  pikePush:           { name:'Pike Push-Ups',               sets:'3×', reps:'8 reps',     equip:'Ground',            tip:'Hips high, head toward ground. Overhead press pattern.', key:true },
+  pikePushPeak:       { name:'Pike Push-Ups',               sets:'4×', reps:'10 reps',    equip:'Ground',            tip:'4 sets — best phase for shoulder pressing.' },
+  ropes:              { name:'Battling Rope Slams',         sets:'3×', reps:'20s on/20s off', equip:'Battling ropes', tip:'Alternate arms, drive hard. Rear delts and upper back.' },
+  ropesPeak:          { name:'Battling Rope Slams',         sets:'4×', reps:'25s on/15s off', equip:'Battling ropes', tip:'Shorter rest, longer work. Go hard.' },
+  // Lower – outdoor
+  squats:             { name:'Bodyweight Squats',           sets:'3×', reps:'15 reps',    equip:'Ground',            tip:'Feet shoulder-width. Full depth. Chest tall.', key:true },
+  squatsPeak:         { name:'Bodyweight Squats',           sets:'4×', reps:'15 reps',    equip:'Ground',            tip:'4 sets. Pause 2 sec at the bottom.', key:true },
+  bulgarian:          { name:'Bulgarian Split Squats',      sets:'3×', reps:'8 / leg',    equip:'Low bar (rear foot)', tip:'Rear foot elevated. Front foot far enough that knee stays behind toes.', key:true },
+  bulgarianPeak:      { name:'Bulgarian Split Squats',      sets:'4×', reps:'10 / leg',   equip:'Low bar (rear foot)', tip:'Extra set, extra reps. 1 sec bottom pause.', key:true },
+  hipHinge:           { name:'Hip Hinge / Good Morning',   sets:'3×', reps:'12 reps',    equip:'Open ground',        tip:'Soft knees, hinge forward until hamstring tension, drive hips forward to stand.', key:true },
+  hipHingePeak:       { name:'Hip Hinge / Good Morning',   sets:'4×', reps:'15 reps',    equip:'Open ground',        tip:'4 sets. 3 sec forward eccentric.', key:true },
+  gluteBridge:        { name:'Glute Bridge',                sets:'3×', reps:'15 reps',    equip:'Ground',            tip:'Hips up, 2 sec squeeze at top.' },
+  gluteBridgePeak:    { name:'Glute Bridge',                sets:'3×', reps:'20 reps',    equip:'Ground',            tip:'More reps. Single-leg on last set if 20 feels easy.' },
+  stepUps:            { name:'Step-Ups',                   sets:'3×', reps:'10 / leg',   equip:'Platform / wall',   tip:'Drive through the heel of the elevated foot.' },
+  calfRaises:         { name:'Single-Leg Calf Raises',     sets:'3×', reps:'15 / leg',   equip:'Step edge',         tip:'Full range — heel drops below step, full rise.' },
+  lateralSquat:       { name:'Lateral Squats',             sets:'3×', reps:'10 / side',  equip:'Open ground',       tip:'Wide stance, shift weight side to side bending one knee.' },
+  jumpSquats:         { name:'Jump Squats',                sets:'3×', reps:'10 reps',    equip:'Ground',            tip:'Squat, explode up. Land softly with bent knees.', key:true },
+  jumpSquatsPeak:     { name:'Jump Squats',                sets:'4×', reps:'12 reps',    equip:'Ground',            tip:'Peak power. Land quietly, immediately reload.', key:true },
+  reverseLunges:      { name:'Reverse Lunges',             sets:'3×', reps:'10 / leg',   equip:'Open ground',       tip:'Step back — easier on the knee. Torso upright.' },
+  singleLegGlute:     { name:'Single-Leg Glute Bridge',   sets:'3×', reps:'12 / leg',   equip:'Ground',            tip:'One leg extended, drive with the planted leg.' },
+  // Core – outdoor
+  plank:              { name:'Plank',                      sets:'3×', reps:'30–40 sec',  equip:'Ground',            tip:'Forearms down. Squeeze glutes and abs. Hips level.' },
+  plankPeak:          { name:'Plank',                      sets:'3×', reps:'45–60 sec',  equip:'Ground',            tip:'Longer holds. Treat it like a strength exercise.' },
+  superman:           { name:'Superman Hold',              sets:'3×', reps:'8 × 3 sec',  equip:'Ground',            tip:'Lift arms, chest, and legs simultaneously. Lower back strength.' },
+  sidePlank:          { name:'Side Plank',                 sets:'2× each', reps:'30 sec', equip:'Ground',           tip:'Forearm down, body straight. Obliques and lateral stability.' },
+  sidePlankPeak:      { name:'Side Plank',                 sets:'3× each', reps:'40 sec', equip:'Ground',           tip:'3 sets each side. Hip slightly raised at top.' },
+  burpees:            { name:'Burpees',                    sets:'3×', reps:'8 reps',     equip:'Ground',            tip:'Drop, push-up, jump up. 60 sec rest between rounds.', key:true },
+  burpeesPeak:        { name:'Burpees',                    sets:'4×', reps:'10 reps',    equip:'Ground',            tip:'4 sets. 45 sec rest only.', key:true },
+  // Cool-down – outdoor
+  deadHangStretch:    { name:'Passive Dead Hang',          reps:'2 × 30 sec',           equip:'Pull-up bar',        tip:'Breathe and hang. Best lat + shoulder decompression.' },
+  childPose:          { name:'Child\'s Pose',               reps:'60 sec',               equip:'Ground',            tip:'Arms forward, hips to heels. Breathe into your lower back.' },
+  chestStretch:       { name:'Chest Stretch on Post',      reps:'30 sec / side',        equip:'Upright pole',       tip:'Arm extended on pole, rotate body away.' },
+  quadStretch:        { name:'Standing Quad Stretch',      reps:'30 sec / leg',         equip:'Bar for balance',    tip:'Hold ankle behind you, keep knees together.' },
+  pigeonPose:         { name:'Pigeon Pose (modified)',     reps:'45 sec / side',        equip:'Ground',             tip:'Shin forward, lean gently over it. Glute release.' },
+  hipFlexor:          { name:'Hip Flexor Stretch',         reps:'45 sec / side',        equip:'Ground',             tip:'Low lunge, sink hips toward ground.' },
+  spinalTwist:        { name:'Supine Spinal Twist',        reps:'45 sec / side',        equip:'Ground',             tip:'On your back, one knee across body. Gentle rotation.' },
+  hamstring:          { name:'Seated Hamstring Stretch',   reps:'45 sec / leg',         equip:'Ground',             tip:'One leg extended, reach toward foot.' },
+  neckRolls:          { name:'Neck Rolls',                 reps:'5 each direction',     equip:'Open ground',        tip:'Gentle half-circles only. Releases tension from hanging.' },
+  // Yoga / home poses
+  downDog:            { name:'Downward Dog',               sets:'3×', reps:'8 breaths', equip:'Yoga mat / floor',  tip:'Hips high, heels pressing toward floor. Pedal the feet. Hamstrings, calves, shoulders.', key:true },
+  warriorOne:         { name:'Warrior I',                  sets:'2×', reps:'6 breaths / side', equip:'Yoga mat', tip:'Front knee over ankle, back foot 45°. Hips square forward, arms up.' },
+  warriorTwo:         { name:'Warrior II',                 sets:'2×', reps:'6 breaths / side', equip:'Yoga mat', tip:'Wide stance, front knee bent. Arms open wide. Opens hips gently.' },
+  triangle:           { name:'Triangle Pose',              reps:'5 breaths / side',     equip:'Yoga mat / floor',  tip:'Legs wide, reach front hand toward shin. Side body + hamstrings.' },
+  bridgePose:         { name:'Bridge Pose (Yoga)',         sets:'3×', reps:'6 breaths', equip:'Yoga mat / floor',  tip:'Feet flat, drive hips up. Hold rather than rep — more restorative.', key:true },
+  pigeonFull:         { name:'Pigeon Pose (full hold)',    reps:'90 sec / side',        equip:'Yoga mat / floor',  tip:'Shin forward, fold over the front leg. Deep glute and hip flexor release.' },
+  forwardFold:        { name:'Seated Forward Fold',        reps:'8 breaths',            equip:'Yoga mat / floor',  tip:'Both legs extended, hinge from hips. No forcing — breathe into it.' },
+  legsUpWall:         { name:'Legs Up the Wall',           reps:'3–5 min',              equip:'Wall / floor',      tip:'Legs resting up a wall, completely passive. Best restorative pose for menstrual phase.' },
+  reclinedBound:      { name:'Reclined Bound Angle',       reps:'2 min',                equip:'Yoga mat / floor',  tip:'Soles of feet together, knees open. Hands on belly. Calms the nervous system.' },
+  yinDragon:          { name:'Yin Dragon Pose',            reps:'2 min / side',         equip:'Yoga mat / floor',  tip:'Low lunge, both hands inside front foot. Surrender into gravity — no muscular effort. Hip flexors and groin.', key:true },
+  threadNeedle:       { name:'Thread the Needle',          reps:'5 breaths / side',     equip:'Yoga mat / floor',  tip:'On all fours, slide one arm under body. Shoulder and thoracic rotation release.' },
+  eagleArms:          { name:'Eagle Arms (seated)',        reps:'45 sec / side',        equip:'Chair or floor',    tip:'Cross one arm under the other at elbow, lift. Deep rhomboid and rear delt stretch.' },
+  reclinedPigeon:     { name:'Reclined Pigeon (Figure-Four)', reps:'90 sec / side',    equip:'Yoga mat / floor',  tip:'Ankle on opposite thigh, gently press knee away. Same target as pigeon, easier on the knee.' },
+  // Home strength
+  wallPushUps:        { name:'Wall Push-Ups',              sets:'3×', reps:'12 reps',   equip:'Wall',              tip:'Hands at shoulder height. Step back to increase difficulty. Elbows at 45°.' },
+  kneelingPushUps:    { name:'Kneeling Push-Ups',          sets:'3×', reps:'10 reps',   equip:'Yoga mat / floor',  tip:'Knees down, same 45° elbow angle. Between wall push-ups and full push-ups.' },
+  tableRow:           { name:'Table-Top Row',              sets:'3×', reps:'6 breaths', equip:'Table / desk edge', tip:'Sit under a sturdy table, grip the edge, pull chest toward it. Mimics Australian rows.', key:true },
+  towelRow:           { name:'Towel Row (Doorframe)',      sets:'3×', reps:'8 reps',    equip:'Doorframe + towel', tip:'Loop a towel at hip height around a doorframe. Lean back, pull chest to door. Lat activation.', key:true },
+  wallSit:            { name:'Wall Sit',                   sets:'3×', reps:'30–45 sec', equip:'Wall',              tip:'Back flat on wall, thighs parallel. Isometric quad hold. Surprisingly hard.', key:true },
+  gluteBridgeHome:    { name:'Glute Bridge',               sets:'3×', reps:'15 reps',   equip:'Yoga mat / floor',  tip:'Feet flat, drive hips up. 2 sec squeeze at top.' },
+  singleGluteHome:    { name:'Single-Leg Glute Bridge',   sets:'3×', reps:'10 / leg',  equip:'Yoga mat / floor',  tip:'One leg extended, drive with the grounded foot.' },
+  calfHome:           { name:'Calf Raises',                sets:'3×', reps:'20 reps',   equip:'Step or floor',     tip:'Full range — heel drops below step, full rise.' },
+  bearCrawl:          { name:'Bear Crawl (fwd + back)',   sets:'3×', reps:'10 steps',   equip:'Floor',             tip:'Hands and feet, knees hovering 2cm. Opposite hand and foot. Shoulders, core, hips.', key:true },
+  deadBug:            { name:'Dead Bug',                   sets:'3×', reps:'8 / side',  equip:'Yoga mat / floor',  tip:'Arms up, knees 90°. Lower opposite arm and leg — keep lower back pressed down.', key:true },
+  shoulderTaps:       { name:'Plank Shoulder Taps',       sets:'3×', reps:'10 / side',  equip:'Yoga mat / floor',  tip:'High plank. Tap opposite shoulder, resist rotation.' },
+  clamshell:          { name:'Side-Lying Clamshell',      sets:'2×', reps:'15 / side',  equip:'Yoga mat / floor',  tip:'On your side, feet together, rotate top knee up. Glute med activation.' },
   // Breathwork
-  boxBreath: { name:'Box Breathing', reps:'5 min', equip:'Anywhere', tip:'Inhale 4 counts → hold 4 → exhale 4 → hold 4. Activates the parasympathetic nervous system. Best thing you can do for PMS-related anxiety or cramps.' },
-  nadi: { name:'Alternate Nostril Breathing (Nadi)', reps:'3 min', equip:'Anywhere', tip:'Right thumb closes right nostril → inhale left → close left with ring finger → exhale right → inhale right → close → exhale left. Balancing and calming.' },
-
-  // Cool-down
-  deadHangStretch: { name:'Passive Dead Hang', reps:'2 × 30 sec', equip:'Chin-up bar', tip:'Just breathe and hang. Best lat + shoulder decompression you can do.' },
-  childPose: { name:'Child\'s Pose', reps:'60 sec', equip:'Soft-fall ground', tip:'Arms forward, hips to heels. Breathe into your lower back.' },
-  chestStretch: { name:'Chest Stretch on Post', reps:'30 sec each side', equip:'Upright pole', tip:'Arm extended on pole, rotate body away. Counteracts all pressing.' },
-  quadStretch: { name:'Standing Quad Stretch', reps:'30 sec each leg', equip:'Bar for balance', tip:'Hold ankle behind you, keep knees together. Gentle hold.' },
-  pigeonPose: { name:'Pigeon Pose (modified)', reps:'45 sec each side', equip:'Soft-fall ground', tip:'Shin forward on ground, lean gently over it. Glute release.' },
-  hipFlexorStretch: { name:'Hip Flexor Stretch', reps:'45 sec each side', equip:'Soft-fall ground', tip:'Low lunge, sink hips toward ground. Essential after leg sessions.' },
-  spinalTwist: { name:'Supine Spinal Twist', reps:'45 sec each side', equip:'Soft-fall ground', tip:'On your back, one knee across body. Gentle rotation for the lower back and hips.' },
-  hamstringStretch: { name:'Seated Hamstring Stretch', reps:'45 sec each leg', equip:'Soft-fall ground', tip:'One leg extended, reach toward foot. Great after hinge work.' },
-  figourFourStretch: { name:'Figure-Four Stretch', reps:'45 sec each side', equip:'Soft-fall ground', tip:'On your back, ankle on opposite knee, gently press the knee out. Piriformis + glutes.' },
-  neckRolls: { name:'Neck Rolls', reps:'5 each direction', equip:'Open ground', tip:'Gentle half-circles only — no full backward rolls. Releases tension from hanging.' },
+  boxBreath:          { name:'Box Breathing',              reps:'5 min',                equip:'Anywhere',           tip:'Inhale 4 → hold 4 → exhale 4 → hold 4. Parasympathetic activation. Best for PMS anxiety or cramps.' },
+  nadi:               { name:'Alternate Nostril Breathing', reps:'3 min',               equip:'Anywhere',           tip:'Right thumb closes right nostril → inhale left → close left → exhale right → repeat. Balancing and calming.' },
 };
 
-// ─── WEEK DATA ─────────────────────────────────────────────────────────────
-const WEEKS = [
-  // ── WEEK 1: MENSTRUAL (home / yoga) ─────────────────────────────────────
-  {
-    weekNum: 1,
-    phaseId: 'menstrual',
-    title: 'Week 1 — Gentle Start',
-    days: [
-      {
-        dayNum: 1, dayName: 'Mon', label: 'Yoga Flow — Upper Body', type: 'train', icon: '🧘', color: 'var(--menstrual)',
-        location: '🏠 Home',
-        phases: [
-          { name: 'Opening', icon: '🌸', color: 'var(--menstrual)', exercises: [EX.childPoseWarmup, EX.catCowFlow, EX.lyingTwist] },
-          { name: 'Gentle Strength', icon: '💪', color: 'var(--menstrual)', exercises: [EX.downwardDog, EX.tableTopRow, EX.doorwayRow, EX.wallPushUps, EX.threadNeedle] },
-          { name: 'Cool-Down', icon: '🧘', color: '#a78bfa', exercises: [EX.eagleArms, EX.reclinedBoundAngle, EX.boxBreath] },
-        ],
-        cycleNote: 'No park today — all home. If cramps are significant, skip straight to the cool-down. That still counts as showing up.',
-      },
-      { dayNum: 2, dayName: 'Tue', label: 'Rest / Gentle Walk', type: 'rest', icon: '🚶', restNote: 'Easy walk at most. 20 min, flat ground, comfortable pace.', restTips: ['Gentle movement does reduce cramping for most people.', 'If energy is very low, legs up the wall for 10 min is enough.', 'No pressure — full rest is the right call today if needed.'] },
-      {
-        dayNum: 3, dayName: 'Wed', label: 'Yoga — Hips & Legs', type: 'train', icon: '🧘', color: 'var(--menstrual)',
-        location: '🏠 Home',
-        phases: [
-          { name: 'Opening', icon: '🌸', color: 'var(--menstrual)', exercises: [EX.catCowFlow, EX.ankleCircles, EX.reclinedBoundAngle] },
-          { name: 'Hip Flow', icon: '🦵', color: 'var(--menstrual)', exercises: [EX.yinHipOpener, EX.warriorOne, EX.warriorTwo, EX.bridgePose, EX.gluteBridgeHome] },
-          { name: 'Deep Release', icon: '🌙', color: '#a78bfa', exercises: [EX.pigeonPoseFull, EX.seatForwardFold, EX.legsUpWall] },
-        ],
-        cycleNote: 'Hold each pose longer than feels necessary. The yin dragon and pigeon are working even when they feel passive.',
-      },
-      { dayNum: 4, dayName: 'Thu', label: 'Rest', type: 'rest', icon: '😴', restNote: 'Full rest. Prioritise sleep and iron-rich food.', restTips: ['Menstrual phase is the hardest week hormonally. Rest is programming.', 'Iron-rich food today: red meat, lentils, spinach.', 'Follicular surge is coming — this rest feeds into it.'] },
-      {
-        dayNum: 5, dayName: 'Fri', label: 'Home Strength + Breathwork', type: 'train', icon: '🏠', color: 'var(--menstrual)',
-        location: '🏠 Home',
-        phases: [
-          { name: 'Warm-Up', icon: '🔥', color: '#ff7a39', exercises: [EX.sunSaluteA, EX.catCowFlow] },
-          { name: 'Gentle Strength', icon: '💪', color: 'var(--menstrual)', exercises: [EX.kneelingPushUps, EX.wallSit, EX.gluteBridgeHome, EX.sideLyingClamshell, EX.deadBug] },
-          { name: 'Breathwork + Wind-Down', icon: '🌬️', color: '#a78bfa', exercises: [EX.reclinedPigeon, EX.legsUpWall, EX.nadi] },
-        ],
-        cycleNote: 'End the week gently. If you only do the breathwork section today, that is completely fine.',
-      },
-      { dayNum: 6, dayName: 'Sat', label: 'Rest', type: 'rest', icon: '🌊', restNote: 'Gentle weekend. Walk, swim, or nothing.', restTips: ['South Bank pool is a great low-impact option — warm water especially.', 'Foam roll or do legs up the wall if sore.'] },
-      { dayNum: 7, dayName: 'Sun', label: 'Full Rest', type: 'rest', icon: '😌', restNote: 'Full rest. Follicular phase starts tomorrow.', restTips: ['Eat well today — you are about to enter your strongest training week.', 'Energy will start picking up from tomorrow.'] },
-    ],
-  },
-
-    // ── WEEK 2: FOLLICULAR (peak training week) ─────────────────────────────
-  {
-    weekNum: 2,
-    phaseId: 'follicular',
-    title: 'Week 2 — Build Hard',
-    days: [
-      {
-        dayNum: 1, dayName: 'Mon', label: 'Back & Pull (peak)', type: 'train', icon: '💪', color: 'var(--follicular)',
-        phases: [
-          { name: 'Warm-Up', icon: '🔥', color: '#ff7a39', exercises: [EX.shoulderCircles, EX.armSwings, EX.deadHangPassive] },
-          { name: 'Pull (max volume)', icon: '🏗️', color: 'var(--follicular)', exercises: [EX.scapularPulls, EX.negativeChinsPeak, EX.australianRowsPeak, EX.hangingKneeRaises, EX.monkeyBars] },
-          { name: 'Core (hard)', icon: '🎯', color: '#a78bfa', exercises: [EX.plankPeak, EX.superman, EX.sidePlankPeak] },
-          { name: 'Cool-Down', icon: '🧘', color: 'var(--luteal)', exercises: [EX.deadHangStretch, EX.childPose, EX.neckRolls] },
-        ],
-        cycleNote: 'Oestrogen rising — this is your strongest week. Push past last week\'s rep counts.',
-      },
-      {
-        dayNum: 2, dayName: 'Tue', label: 'Lower Body (peak)', type: 'train', icon: '🦵', color: 'var(--follicular)',
-        phases: [
-          { name: 'Warm-Up', icon: '🔥', color: '#ff7a39', exercises: [EX.hipCircles, EX.legSwings, EX.slowBodyweightSquat] },
-          { name: 'Lower (max)', icon: '🦵', color: 'var(--follicular)', exercises: [EX.bodyweightSquatPeak, EX.bulgarianSplitPeak, EX.hipHingePeak, EX.stepUps, EX.calfRaises] },
-          { name: 'Cool-Down', icon: '🧘', color: 'var(--luteal)', exercises: [EX.quadStretch, EX.pigeonPose, EX.hamstringStretch] },
-        ],
-        cycleNote: 'Go as horizontal as possible on Australian rows. Go to depth on squats.',
-      },
-      { dayNum: 3, dayName: 'Wed', label: 'Rest', type: 'rest', icon: '😴', restNote: 'Recovery day between hard sessions.', restTips: ['Light walk fine.', 'Protein intake matters most on rest days after hard sessions.'] },
-      {
-        dayNum: 4, dayName: 'Thu', label: 'Push (peak)', type: 'train', icon: '🏋️', color: 'var(--follicular)',
-        phases: [
-          { name: 'Warm-Up', icon: '🔥', color: '#ff7a39', exercises: [EX.armSwings, EX.jumpingJacks, EX.catCow] },
-          { name: 'Push (max)', icon: '💥', color: 'var(--follicular)', exercises: [EX.inclinePushUpsPeak, EX.pushUpsPeak, EX.dipHoldPeak, EX.assistedDipsPeak, EX.pikePushUpsPeak] },
-          { name: 'Shoulders', icon: '🎯', color: '#a78bfa', exercises: [EX.battlingRopesPeak, EX.sidePlankPeak] },
-          { name: 'Cool-Down', icon: '🧘', color: 'var(--luteal)', exercises: [EX.chestStretch, EX.deadHangStretch, EX.childPose] },
-        ],
-        cycleNote: 'Best week for pressing. 4 sets across the board. Try flat push-ups if inclines feel manageable.',
-      },
-      {
-        dayNum: 5, dayName: 'Fri', label: 'Full Body (peak)', type: 'train', icon: '🔥', color: 'var(--follicular)',
-        phases: [
-          { name: 'Warm-Up', icon: '🔥', color: '#ff7a39', exercises: [EX.jumpingJacks, EX.catCow, EX.hipCircles] },
-          { name: 'Lower Power', icon: '🦵', color: 'var(--follicular)', exercises: [EX.jumpSquatsPeak, EX.reverseLunges, EX.singleLegGlute] },
-          { name: 'Full Body Circuit', icon: '⚡', color: '#a78bfa', exercises: [EX.burpeesPeak, EX.monkeyBars, EX.australianRowsPeak] },
-          { name: 'Core', icon: '🎯', color: 'var(--follicular)', exercises: [EX.hangingKneeRaises, EX.sidePlankPeak] },
-          { name: 'Cool-Down', icon: '🧘', color: 'var(--luteal)', exercises: [EX.deadHangStretch, EX.hipFlexorStretch, EX.childPose] },
-        ],
-        cycleNote: 'Hardest session of the month. You\'re built for this right now.',
-      },
-      { dayNum: 6, dayName: 'Sat', label: 'Rest', type: 'rest', icon: '🌊', restNote: 'Weekend recovery after a hard week.', restTips: ['Foam roll legs and upper back.', 'You\'ve earned this rest.'] },
-      { dayNum: 7, dayName: 'Sun', label: 'Full Rest', type: 'rest', icon: '😌', restNote: 'Ovulation phase begins. Energy still high.', restTips: ['Moving into peak power window.', 'Warm up thoroughly — joint laxity increases around ovulation.'] },
-    ],
-  },
-
-  // ── WEEK 3: OVULATION → EARLY LUTEAL ────────────────────────────────────
-  {
-    weekNum: 3,
-    phaseId: 'earlyLuteal',
-    title: 'Week 3 — Peak → Maintain',
-    days: [
-      {
-        dayNum: 1, dayName: 'Mon', label: 'Back & Pull (strong)', type: 'train', icon: '💪', color: 'var(--ovulation)',
-        phases: [
-          { name: 'Warm-Up (thorough)', icon: '🔥', color: '#ff7a39', exercises: [EX.shoulderCircles, EX.armSwings, EX.deadHangPassive, EX.catCow] },
-          { name: 'Pull (ovulation peak)', icon: '🏗️', color: 'var(--ovulation)', exercises: [EX.scapularPulls, EX.negativeChinsPeak, EX.australianRowsPeak, EX.hangingKneeRaises] },
-          { name: 'Core', icon: '🎯', color: '#a78bfa', exercises: [EX.plankPeak, EX.superman, EX.sidePlank] },
-          { name: 'Cool-Down', icon: '🧘', color: 'var(--luteal)', exercises: [EX.deadHangStretch, EX.neckRolls, EX.childPose] },
-        ],
-        cycleNote: 'Peak oestrogen — still strong. Warm up THOROUGHLY. Ligament laxity is at its highest right now.',
-      },
-      {
-        dayNum: 2, dayName: 'Tue', label: 'Lower Body (strong)', type: 'train', icon: '🦵', color: 'var(--ovulation)',
-        phases: [
-          { name: 'Warm-Up', icon: '🔥', color: '#ff7a39', exercises: [EX.hipCircles, EX.legSwings, EX.slowBodyweightSquat] },
-          { name: 'Lower Body', icon: '🦵', color: 'var(--ovulation)', exercises: [EX.bodyweightSquatPeak, EX.bulgarianSplitPeak, EX.hipHinge, EX.stepUps, EX.calfRaises] },
-          { name: 'Cool-Down', icon: '🧘', color: 'var(--luteal)', exercises: [EX.quadStretch, EX.pigeonPose, EX.hamstringStretch] },
-        ],
-        cycleNote: 'Great power output still. Land softly on any jumping — joints are lax.',
-      },
-      { dayNum: 3, dayName: 'Wed', label: 'Rest', type: 'rest', icon: '😴', restNote: 'Transition from ovulation into early luteal.', restTips: ['Energy may start to dip slightly.', 'Good time to stretch and foam roll.'] },
-      {
-        dayNum: 4, dayName: 'Thu', label: 'Push (maintain)', type: 'train', icon: '🏋️', color: 'var(--luteal)',
-        phases: [
-          { name: 'Warm-Up', icon: '🔥', color: '#ff7a39', exercises: [EX.armSwings, EX.catCow] },
-          { name: 'Push (technique focus)', icon: '💥', color: 'var(--luteal)', exercises: [EX.inclinePushUps, EX.pushUps, EX.dipHold, EX.assistedDips, EX.pikePushUps] },
-          { name: 'Shoulders', icon: '🎯', color: '#a78bfa', exercises: [EX.battlingRopes, EX.sidePlank] },
-          { name: 'Cool-Down', icon: '🧘', color: 'var(--luteal)', exercises: [EX.chestStretch, EX.deadHangStretch, EX.childPose] },
-        ],
-        cycleNote: 'Same exercises as follicular week, same sets. Don\'t chase new PRs — maintain quality.',
-      },
-      {
-        dayNum: 5, dayName: 'Fri', label: 'Full Body (maintain)', type: 'train', icon: '🔥', color: 'var(--luteal)',
-        phases: [
-          { name: 'Warm-Up', icon: '🔥', color: '#ff7a39', exercises: [EX.jumpingJacks, EX.catCow, EX.hipCircles] },
-          { name: 'Lower Power', icon: '🦵', color: 'var(--luteal)', exercises: [EX.jumpSquats, EX.reverseLunges, EX.singleLegGlute] },
-          { name: 'Full Body Circuit', icon: '⚡', color: '#a78bfa', exercises: [EX.burpees, EX.monkeyBars, EX.australianRows] },
-          { name: 'Core', icon: '🎯', color: 'var(--luteal)', exercises: [EX.hangingKneeRaises, EX.sidePlank] },
-          { name: 'Cool-Down', icon: '🧘', color: 'var(--luteal)', exercises: [EX.deadHangStretch, EX.hipFlexorStretch, EX.childPose] },
-        ],
-        cycleNote: 'Keep the effort consistent with Week 2. Your output may feel slightly lower — that\'s normal.',
-      },
-      { dayNum: 6, dayName: 'Sat', label: 'Rest', type: 'rest', icon: '🌊', restNote: 'Weekend rest.', restTips: ['Early luteal — energy still reasonable.', 'Light bike ride along the river is ideal.'] },
-      { dayNum: 7, dayName: 'Sun', label: 'Full Rest', type: 'rest', icon: '😌', restNote: 'Prepare for late luteal week.', restTips: ['Progesterone rising — energy will start to soften.', 'Prioritise sleep this week.'] },
-    ],
-  },
-
-  // ── WEEK 4: LATE LUTEAL (home / yoga) ───────────────────────────────────
-  {
-    weekNum: 4,
-    phaseId: 'lateLuteal',
-    title: 'Week 4 — Wind Down',
-    days: [
-      {
-        dayNum: 1, dayName: 'Mon', label: 'Yoga — Back & Shoulders', type: 'train', icon: '🧘', color: 'var(--late-luteal)',
-        location: '🏠 Home',
-        phases: [
-          { name: 'Opening', icon: '🌸', color: 'var(--late-luteal)', exercises: [EX.childPoseWarmup, EX.catCowFlow, EX.lyingTwist] },
-          { name: 'Strength (home)', icon: '💪', color: 'var(--late-luteal)', exercises: [EX.downwardDog, EX.doorwayRow, EX.tableTopRow, EX.bearCrawl, EX.plankShoulderTap] },
-          { name: 'Release', icon: '🌙', color: '#a78bfa', exercises: [EX.threadNeedle, EX.eagleArms, EX.reclinedBoundAngle, EX.boxBreath] },
-        ],
-        cycleNote: 'Home session. PMS week — no performance pressure. If symptoms are bad, do just the opening and release blocks.',
-      },
-      { dayNum: 2, dayName: 'Tue', label: 'Rest / Gentle Walk', type: 'rest', icon: '🚶', restNote: 'Easy movement only. Hormones are dropping.', restTips: ['A short walk genuinely helps PMS mood and bloating.', 'Keep it flat and comfortable — no intensity.', 'Full rest if pain is significant.'] },
-      {
-        dayNum: 3, dayName: 'Wed', label: 'Yoga — Hips & Legs', type: 'train', icon: '🧘', color: 'var(--late-luteal)',
-        location: '🏠 Home',
-        phases: [
-          { name: 'Opening', icon: '🌸', color: 'var(--late-luteal)', exercises: [EX.catCowFlow, EX.ankleCircles, EX.reclinedBoundAngle] },
-          { name: 'Gentle Lower', icon: '🦵', color: 'var(--late-luteal)', exercises: [EX.yinHipOpener, EX.warriorTwo, EX.gluteBridgeHome, EX.singleLegGluteHome, EX.sideLyingClamshell] },
-          { name: 'Yin & Release', icon: '🌙', color: '#a78bfa', exercises: [EX.pigeonPoseFull, EX.trianglePose, EX.seatForwardFold, EX.legsUpWall] },
-        ],
-        cycleNote: 'Yin holds are the star here. Pigeon for 90 sec each side is genuinely therapeutic for PMS hip and lower back tension.',
-      },
-      { dayNum: 4, dayName: 'Thu', label: 'Rest', type: 'rest', icon: '😴', restNote: 'Full rest. Late luteal is real recovery time.', restTips: ['Bloating, fatigue, and mood shifts are physiological — not weakness.', 'Magnesium glycinate before bed can ease PMS symptoms.', 'Prioritise sleep above everything today.'] },
-      {
-        dayNum: 5, dayName: 'Fri', label: 'Home Strength + Wind-Down', type: 'train', icon: '🏠', color: 'var(--late-luteal)',
-        location: '🏠 Home',
-        phases: [
-          { name: 'Warm-Up', icon: '🔥', color: '#ff7a39', exercises: [EX.sunSaluteA, EX.catCowFlow] },
-          { name: 'Gentle Strength', icon: '💪', color: 'var(--late-luteal)', exercises: [EX.wallPushUps, EX.wallSit, EX.deadBug, EX.gluteBridgeHome, EX.calfRaisesHome] },
-          { name: 'Full Wind-Down', icon: '🌬️', color: '#a78bfa', exercises: [EX.reclinedPigeon, EX.legsUpWall, EX.nadi, EX.boxBreath] },
-        ],
-        cycleNote: 'Last session of the month. Go easy. The breathwork at the end resets the nervous system for next cycle.',
-      },
-      { dayNum: 6, dayName: 'Sat', label: 'Rest', type: 'rest', icon: '🌊', restNote: 'Weekend rest. Cycle resets very soon.', restTips: ['Gentle stretch or walk.', 'Prep for Week 1 again — maybe update your mat space at home.'] },
-      { dayNum: 7, dayName: 'Sun', label: 'Full Rest', type: 'rest', icon: '😌', restNote: 'Final rest day. Repeat from Week 1 next cycle.', restTips: ['Month 2: try to beat your Week 2 (follicular) rep counts.', 'Note what felt hardest — that is your focus area next month.', 'You finished the month. That matters.'] },
-    ],
-  },
+// ── 29-DAY SESSION PLAN ──────────────────────────────────────────────────────
+const DAYS = [
+  // ── MENSTRUAL (Days 1–5) — Home / Yoga ────────────────────────────────
+  { d:1,  phase:'menstrual',   icon:'🧘', label:'Yoga — Upper Body',         loc:'🏠 Home',        type:'train',
+    note:'No outdoor gym this week — all home. If cramps are significant, do just the opening and breathwork. That still counts.',
+    phases:[
+      { name:'Opening',         icon:'🌸', color:'var(--menstrual)',  ex:[EX.childCatCow, EX.lyingTwist] },
+      { name:'Gentle Strength', icon:'💪', color:'var(--menstrual)',  ex:[EX.downDog, EX.tableRow, EX.towelRow, EX.wallPushUps, EX.threadNeedle] },
+      { name:'Wind-Down',       icon:'🧘', color:'#a78bfa',           ex:[EX.eagleArms, EX.reclinedBound, EX.boxBreath] },
+    ]},
+  { d:2,  phase:'menstrual',   icon:'🚶', label:'Rest / Gentle Walk',        type:'rest', restNote:'Easy walk at most — 20 min, flat ground. Full rest is also correct.', restTips:['Gentle movement reduces cramping for most people.','Legs up the wall for 10 min if energy is low.','No pressure today.'] },
+  { d:3,  phase:'menstrual',   icon:'🧘', label:'Yoga — Hips & Legs',        loc:'🏠 Home',        type:'train',
+    note:'Hold each pose longer than feels necessary. The yin dragon and pigeon are working even when they feel passive.',
+    phases:[
+      { name:'Opening',      icon:'🌸', color:'var(--menstrual)',  ex:[EX.childCatCow, EX.ankleCircles, EX.reclinedBound] },
+      { name:'Hip Flow',     icon:'🦵', color:'var(--menstrual)',  ex:[EX.yinDragon, EX.warriorOne, EX.warriorTwo, EX.bridgePose, EX.gluteBridgeHome] },
+      { name:'Deep Release', icon:'🌙', color:'#a78bfa',           ex:[EX.pigeonFull, EX.forwardFold, EX.legsUpWall] },
+    ]},
+  { d:4,  phase:'menstrual',   icon:'😴', label:'Rest',                      type:'rest', restNote:'Full rest. Sleep and iron-rich food today.', restTips:['Iron-rich food: red meat, lentils, spinach.','The follicular surge is coming — this rest feeds into it.','Magnesium can help with cramps.'] },
+  { d:5,  phase:'menstrual',   icon:'🏠', label:'Home Strength + Breathwork', loc:'🏠 Home',       type:'train',
+    note:'Last day of menstrual phase. Go as gently as you need to.',
+    phases:[
+      { name:'Warm-Up',          icon:'🔥', color:'#ff7a39',          ex:[EX.sunSalute, EX.childCatCow] },
+      { name:'Gentle Strength',  icon:'💪', color:'var(--menstrual)',  ex:[EX.kneelingPushUps, EX.wallSit, EX.gluteBridgeHome, EX.clamshell, EX.deadBug] },
+      { name:'Breathwork',       icon:'🌬️', color:'#a78bfa',          ex:[EX.reclinedPigeon, EX.legsUpWall, EX.nadi] },
+    ]},
+  // ── FOLLICULAR (Days 6–13) — Outdoor Gym ──────────────────────────────
+  { d:6,  phase:'follicular',  icon:'💪', label:'Back & Pull',               loc:'🌿 Outdoor gym', type:'train',
+    note:'Oestrogen rising — energy will feel noticeably better than last week. Push past last cycle\'s rep counts.',
+    phases:[
+      { name:'Warm-Up', icon:'🔥', color:'#ff7a39',           ex:[EX.shoulderCircles, EX.armSwings, EX.deadHangPassive] },
+      { name:'Pull',    icon:'🏗️', color:'var(--follicular)', ex:[EX.scapularPulls, EX.negatives, EX.rows, EX.kneeRaises] },
+      { name:'Core',    icon:'🎯', color:'#a78bfa',           ex:[EX.plank, EX.superman, EX.sidePlank] },
+      { name:'Cool-Down', icon:'🧘', color:'var(--luteal)',   ex:[EX.deadHangStretch, EX.childPose, EX.neckRolls] },
+    ]},
+  { d:7,  phase:'follicular',  icon:'😴', label:'Rest',                      type:'rest', restNote:'Recovery between sessions.', restTips:['Light walk is fine.','Protein matters most on rest days after training.','Prep mentally for tomorrow\'s leg session.'] },
+  { d:8,  phase:'follicular',  icon:'🦵', label:'Lower Body',                loc:'🌿 Outdoor gym', type:'train',
+    note:'Go to full depth on squats. The Bulgarian split is your most important exercise today.',
+    phases:[
+      { name:'Warm-Up',    icon:'🔥', color:'#ff7a39',           ex:[EX.hipCircles, EX.legSwings, EX.slowSquat] },
+      { name:'Lower Body', icon:'🦵', color:'var(--follicular)', ex:[EX.squats, EX.bulgarian, EX.hipHinge, EX.stepUps, EX.calfRaises] },
+      { name:'Cool-Down',  icon:'🧘', color:'var(--luteal)',     ex:[EX.quadStretch, EX.pigeonPose, EX.hamstring] },
+    ]},
+  { d:9,  phase:'follicular',  icon:'😴', label:'Rest',                      type:'rest', restNote:'Rest day.', restTips:['Foam roll legs if sore.','Eat well — recovery is where strength is built.'] },
+  { d:10, phase:'follicular',  icon:'🏋️', label:'Push & Chest',              loc:'🌿 Outdoor gym', type:'train',
+    note:'Best phase for pressing. Try flat push-ups if incline feels manageable.',
+    phases:[
+      { name:'Warm-Up',    icon:'🔥', color:'#ff7a39',           ex:[EX.armSwings, EX.jumpingJacks, EX.catCow] },
+      { name:'Push',       icon:'💥', color:'var(--follicular)', ex:[EX.inclinePush, EX.pushUps, EX.dipHold, EX.dips, EX.pikePush] },
+      { name:'Shoulders',  icon:'🎯', color:'#a78bfa',           ex:[EX.ropes, EX.sidePlank] },
+      { name:'Cool-Down',  icon:'🧘', color:'var(--luteal)',     ex:[EX.chestStretch, EX.deadHangStretch, EX.childPose] },
+    ]},
+  { d:11, phase:'follicular',  icon:'😴', label:'Rest',                      type:'rest', restNote:'Rest day.', restTips:['Upper body recovery.','Stretch chest and shoulders if tight.'] },
+  { d:12, phase:'follicular',  icon:'🔥', label:'Full Body',                 loc:'🌿 Outdoor gym', type:'train',
+    note:'Hardest session of the follicular phase. You\'re built for this right now.',
+    phases:[
+      { name:'Warm-Up',        icon:'🔥', color:'#ff7a39',           ex:[EX.jumpingJacks, EX.catCow, EX.hipCircles] },
+      { name:'Lower Power',    icon:'🦵', color:'var(--follicular)', ex:[EX.jumpSquats, EX.reverseLunges, EX.singleLegGlute] },
+      { name:'Full Body',      icon:'⚡', color:'#a78bfa',           ex:[EX.burpees, EX.monkeyBars, EX.rows] },
+      { name:'Core',           icon:'🎯', color:'var(--follicular)', ex:[EX.kneeRaises, EX.sidePlank] },
+      { name:'Cool-Down',      icon:'🧘', color:'var(--luteal)',     ex:[EX.deadHangStretch, EX.hipFlexor, EX.childPose] },
+    ]},
+  { d:13, phase:'follicular',  icon:'😴', label:'Rest',                      type:'rest', restNote:'Rest before ovulation peak.', restTips:['Ovulation begins tomorrow — warm up thoroughly next session.','Joint laxity increases around ovulation.','Foam roll and sleep well.'] },
+  // ── OVULATION (Days 14–16) — Outdoor Gym ──────────────────────────────
+  { d:14, phase:'ovulation',   icon:'⚡', label:'Back & Pull (peak)',         loc:'🌿 Outdoor gym', type:'train',
+    note:'Peak oestrogen — your strongest day of the cycle. Thorough warm-up is non-negotiable: ligament laxity is at its highest right now.',
+    phases:[
+      { name:'Warm-Up (thorough)', icon:'🔥', color:'#ff7a39',          ex:[EX.shoulderCircles, EX.armSwings, EX.deadHangPassive, EX.catCow] },
+      { name:'Pull (peak)',        icon:'🏗️', color:'var(--ovulation)', ex:[EX.scapularPullsPeak, EX.negativesPeak, EX.rowsPeak, EX.kneeRaisesPeak, EX.monkeyBars] },
+      { name:'Core',               icon:'🎯', color:'#a78bfa',          ex:[EX.plankPeak, EX.superman, EX.sidePlankPeak] },
+      { name:'Cool-Down',          icon:'🧘', color:'var(--luteal)',    ex:[EX.deadHangStretch, EX.neckRolls, EX.childPose] },
+    ]},
+  { d:15, phase:'ovulation',   icon:'⚡', label:'Lower Body (peak)',          loc:'🌿 Outdoor gym', type:'train',
+    note:'Still at peak output. Land softly on any jump work — joints are lax during ovulation.',
+    phases:[
+      { name:'Warm-Up',    icon:'🔥', color:'#ff7a39',          ex:[EX.hipCircles, EX.legSwings, EX.slowSquat] },
+      { name:'Lower Peak', icon:'🦵', color:'var(--ovulation)', ex:[EX.squatsPeak, EX.bulgarianPeak, EX.hipHingePeak, EX.jumpSquatsPeak, EX.calfRaises] },
+      { name:'Cool-Down',  icon:'🧘', color:'var(--luteal)',    ex:[EX.quadStretch, EX.pigeonPose, EX.hamstring] },
+    ]},
+  { d:16, phase:'ovulation',   icon:'🧘', label:'Active Recovery + Stretch', type:'rest', restNote:'Transition day. Light movement and thorough stretching.', restTips:['Ovulation is ending — ligament laxity still elevated.','Gentle yoga or a walk is ideal.','No high-impact today.'] },
+  // ── EARLY LUTEAL (Days 17–24) — Outdoor Gym ───────────────────────────
+  { d:17, phase:'earlyLuteal', icon:'🏋️', label:'Push & Chest',              loc:'🌿 Outdoor gym', type:'train',
+    note:'Same exercises as follicular. Don\'t chase new PRs — maintain quality and technique.',
+    phases:[
+      { name:'Warm-Up',   icon:'🔥', color:'#ff7a39',          ex:[EX.armSwings, EX.catCow] },
+      { name:'Push',      icon:'💥', color:'var(--luteal)',    ex:[EX.inclinePush, EX.pushUps, EX.dipHold, EX.dips, EX.pikePush] },
+      { name:'Shoulders', icon:'🎯', color:'#a78bfa',          ex:[EX.ropes, EX.sidePlank] },
+      { name:'Cool-Down', icon:'🧘', color:'var(--luteal)',    ex:[EX.chestStretch, EX.deadHangStretch, EX.childPose] },
+    ]},
+  { d:18, phase:'earlyLuteal', icon:'😴', label:'Rest',                      type:'rest', restNote:'Rest day.', restTips:['Energy still reasonable in early luteal.','Light activity is fine.'] },
+  { d:19, phase:'earlyLuteal', icon:'🦵', label:'Lower Body',                loc:'🌿 Outdoor gym', type:'train',
+    note:'Maintain volume from follicular week. Output may feel slightly lower — that\'s normal.',
+    phases:[
+      { name:'Warm-Up',    icon:'🔥', color:'#ff7a39',          ex:[EX.hipCircles, EX.legSwings, EX.slowSquat] },
+      { name:'Lower Body', icon:'🦵', color:'var(--luteal)',    ex:[EX.squats, EX.bulgarian, EX.hipHinge, EX.stepUps, EX.lateralSquat] },
+      { name:'Cool-Down',  icon:'🧘', color:'var(--luteal)',    ex:[EX.quadStretch, EX.pigeonPose, EX.hamstring] },
+    ]},
+  { d:20, phase:'earlyLuteal', icon:'😴', label:'Rest',                      type:'rest', restNote:'Rest day.', restTips:['Foam roll if legs are tight.','Sleep is your best recovery tool this phase.'] },
+  { d:21, phase:'earlyLuteal', icon:'💪', label:'Back & Pull',               loc:'🌿 Outdoor gym', type:'train',
+    note:'Second pull session of the cycle. Technique refinement — focus on the scapular squeeze.',
+    phases:[
+      { name:'Warm-Up', icon:'🔥', color:'#ff7a39',          ex:[EX.shoulderCircles, EX.armSwings, EX.deadHangPassive] },
+      { name:'Pull',    icon:'🏗️', color:'var(--luteal)',    ex:[EX.scapularPulls, EX.negativesLight, EX.rowsMaintain, EX.kneeRaises] },
+      { name:'Core',    icon:'🎯', color:'#a78bfa',          ex:[EX.plank, EX.superman, EX.sidePlank] },
+      { name:'Cool-Down', icon:'🧘', color:'var(--luteal)', ex:[EX.deadHangStretch, EX.childPose, EX.spinalTwist] },
+    ]},
+  { d:22, phase:'earlyLuteal', icon:'😴', label:'Rest',                      type:'rest', restNote:'Rest day.', restTips:['Progesterone is rising — energy softening is normal.','Prioritise sleep tonight.'] },
+  { d:23, phase:'earlyLuteal', icon:'🔥', label:'Full Body',                 loc:'🌿 Outdoor gym', type:'train',
+    note:'Last hard session before the wind-down. Keep effort consistent with day 12.',
+    phases:[
+      { name:'Warm-Up',     icon:'🔥', color:'#ff7a39',          ex:[EX.jumpingJacks, EX.catCow, EX.hipCircles] },
+      { name:'Lower Power', icon:'🦵', color:'var(--luteal)',    ex:[EX.jumpSquats, EX.reverseLunges, EX.singleLegGlute] },
+      { name:'Full Body',   icon:'⚡', color:'#a78bfa',          ex:[EX.burpees, EX.monkeyBars, EX.rows] },
+      { name:'Core',        icon:'🎯', color:'var(--luteal)',    ex:[EX.kneeRaises, EX.sidePlank] },
+      { name:'Cool-Down',   icon:'🧘', color:'var(--luteal)',    ex:[EX.deadHangStretch, EX.hipFlexor, EX.childPose] },
+    ]},
+  { d:24, phase:'earlyLuteal', icon:'😴', label:'Rest',                      type:'rest', restNote:'Rest before late luteal phase.', restTips:['Late luteal starts tomorrow — home sessions from here.','Prepare your mat and home space if needed.','Eat well and sleep.'] },
+  // ── LATE LUTEAL (Days 25–29) — Home / Yoga ────────────────────────────
+  { d:25, phase:'lateLuteal',  icon:'🧘', label:'Yoga — Back & Shoulders',   loc:'🏠 Home',        type:'train',
+    note:'Home session. PMS week — no performance pressure. If symptoms are bad, do just the opening and release blocks.',
+    phases:[
+      { name:'Opening',         icon:'🌸', color:'var(--late-luteal)', ex:[EX.childCatCow, EX.lyingTwist] },
+      { name:'Strength (home)', icon:'💪', color:'var(--late-luteal)', ex:[EX.downDog, EX.towelRow, EX.tableRow, EX.bearCrawl, EX.shoulderTaps] },
+      { name:'Release',         icon:'🌙', color:'#a78bfa',            ex:[EX.threadNeedle, EX.eagleArms, EX.reclinedBound, EX.boxBreath] },
+    ]},
+  { d:26, phase:'lateLuteal',  icon:'🚶', label:'Rest / Gentle Walk',        type:'rest', restNote:'Easy movement only. Hormones are dropping.', restTips:['A short walk genuinely helps PMS mood and bloating.','Full rest if pain is significant.','No intensity today.'] },
+  { d:27, phase:'lateLuteal',  icon:'🧘', label:'Yoga — Hips & Legs',        loc:'🏠 Home',        type:'train',
+    note:'Yin holds are the star here. Pigeon for 90 sec each side is genuinely therapeutic for PMS hip and lower back tension.',
+    phases:[
+      { name:'Opening',     icon:'🌸', color:'var(--late-luteal)', ex:[EX.childCatCow, EX.ankleCircles, EX.reclinedBound] },
+      { name:'Gentle Lower', icon:'🦵', color:'var(--late-luteal)', ex:[EX.yinDragon, EX.warriorTwo, EX.gluteBridgeHome, EX.singleGluteHome, EX.clamshell] },
+      { name:'Yin & Release', icon:'🌙', color:'#a78bfa',           ex:[EX.pigeonFull, EX.triangle, EX.forwardFold, EX.legsUpWall] },
+    ]},
+  { d:28, phase:'lateLuteal',  icon:'😴', label:'Rest',                      type:'rest', restNote:'Full rest. Late luteal is genuine recovery time.', restTips:['Bloating, fatigue, and mood shifts are physiological — not weakness.','Magnesium glycinate before bed can ease PMS symptoms.','Sleep above everything today.'] },
+  { d:29, phase:'lateLuteal',  icon:'🏠', label:'Home Strength + Wind-Down', loc:'🏠 Home',        type:'train',
+    note:'Last session of the cycle. Go easy. The breathwork at the end resets the nervous system for next cycle.',
+    phases:[
+      { name:'Warm-Up',       icon:'🔥', color:'#ff7a39',            ex:[EX.sunSalute, EX.childCatCow] },
+      { name:'Gentle Strength', icon:'💪', color:'var(--late-luteal)', ex:[EX.wallPushUps, EX.wallSit, EX.deadBug, EX.gluteBridgeHome, EX.calfHome] },
+      { name:'Full Wind-Down', icon:'🌬️', color:'#a78bfa',           ex:[EX.reclinedPigeon, EX.legsUpWall, EX.nadi, EX.boxBreath] },
+    ]},
 ];
 
-// ─── STATE ────────────────────────────────────────────────────────────────────
-let currentWeek = 0;
-let currentDay = 0;
+// ── STATE ────────────────────────────────────────────────────────────────────
+let cycleStart = localStorage.getItem('cycleStart') || null;
+let currentDayIdx = 0;
 let openPhaseIdx = 0;
-let doneSets = JSON.parse(localStorage.getItem('wl_done') || '{}');
+let done = JSON.parse(localStorage.getItem('cyc_done') || '{}');
 
-function saveState() {
-  localStorage.setItem('wl_done', JSON.stringify(doneSets));
+function saveState() { localStorage.setItem('cyc_done', JSON.stringify(done)); }
+function saveCycleStart(d) { localStorage.setItem('cycleStart', d); }
+
+function getCalDate(dayNum) {
+  if (!cycleStart) return null;
+  const d = new Date(cycleStart);
+  d.setDate(d.getDate() + dayNum - 1);
+  return d;
 }
 
-// ─── RENDER ───────────────────────────────────────────────────────────────────
-function getPhase() { return PHASES[WEEKS[currentWeek].phaseId]; }
-function getDay() { return WEEKS[currentWeek].days[currentDay]; }
+function formatDate(d) {
+  if (!d) return '';
+  return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short' });
+}
 
-function exKey(wi, di, pi, ei) { return `${wi}-${di}-${pi}-${ei}`; }
+function getTodayIdx() {
+  if (!cycleStart) return -1;
+  const start = new Date(cycleStart);
+  const today = new Date();
+  start.setHours(0,0,0,0); today.setHours(0,0,0,0);
+  const diff = Math.round((today - start) / 86400000);
+  if (diff < 0 || diff >= 29) return -1;
+  return diff;
+}
 
-function countDone(wi, di) {
-  const wk = WEEKS[wi]; const day = wk.days[di];
-  if (!day.phases) return [0, 0];
-  let total = 0, done = 0;
-  day.phases.forEach((p, pi) => p.exercises.forEach((_, ei) => {
+function exKey(di, pi, ei) { return `${di}-${pi}-${ei}`; }
+
+function countDoneForDay(di) {
+  const day = DAYS[di];
+  if (!day.phases) return [0,0];
+  let total = 0, doneCount = 0;
+  day.phases.forEach((p, pi) => p.ex.forEach((_, ei) => {
     total++;
-    if (doneSets[exKey(wi, di, pi, ei)]) done++;
+    if (done[exKey(di, pi, ei)]) doneCount++;
   }));
-  return [done, total];
+  return [doneCount, total];
 }
 
-function renderWeekTabs() {
-  const el = document.getElementById('weekTabs');
-  el.innerHTML = WEEKS.map((wk, i) => {
-    const phase = PHASES[wk.phaseId];
-    const active = i === currentWeek;
-    return `<button class="week-tab${active ? ' active' : ''}" onclick="selectWeek(${i})">
-      <div class="wt-label">Week ${wk.weekNum}</div>
-      <div class="wt-phase" style="color:${active ? phase.color : ''}">${phase.name.replace(' Phase','')}</div>
-      <div class="wt-days">${phase.days}</div>
-    </button>`;
-  }).join('');
+// ── RENDER ───────────────────────────────────────────────────────────────────
+function renderAll() {
+  renderDatePicker();
+  renderPhaseBanner();
+  renderDayList();
+  renderMain();
+  renderOverallProgress();
+}
+
+function renderDatePicker() {
+  const el = document.getElementById('cycleStartInput');
+  if (cycleStart) el.value = cycleStart;
 }
 
 function renderPhaseBanner() {
-  const phase = getPhase();
-  const el = document.getElementById('phaseBanner');
-  el.innerHTML = `<div class="phase-banner-inner" style="background:${phase.bg};border-color:${phase.borderColor}">
-    <div class="pb-phase" style="color:${phase.color}">${phase.name} · ${phase.days}</div>
-    <div class="pb-title">${phase.intent}</div>
-    <div class="pb-desc">${phase.desc}</div>
-    <div class="pb-tags">${phase.tags.map(t => `<span class="pb-tag" style="color:${phase.color};border-color:${phase.tagBorder}">${t}</span>`).join('')}</div>
-  </div>`;
+  const day = DAYS[currentDayIdx];
+  const phase = PHASES[day.phase];
+  document.getElementById('phaseBanner').innerHTML =
+    `<div class="phase-banner-inner" style="background:${phase.bg};border-color:${phase.border}">
+      <div class="pb-phase" style="color:${phase.color}">${phase.name} · Day ${day.d} of 29</div>
+      <div class="pb-title">${phase.intent}</div>
+      <div class="pb-desc">${phase.desc}</div>
+      <div class="pb-tags">${phase.tags.map(t=>`<span class="pb-tag" style="color:${phase.color};border-color:${phase.color}66">${t}</span>`).join('')}</div>
+    </div>`;
 }
 
-function renderDayStrip() {
-  const el = document.getElementById('dayStrip');
-  const week = WEEKS[currentWeek];
-  el.innerHTML = week.days.map((day, i) => {
-    const active = i === currentDay;
-    const [done, total] = countDone(currentWeek, i);
-    const complete = total > 0 && done === total;
-    const color = day.color || 'var(--muted)';
-    return `<button class="day-btn${active ? ' active' : ''}${complete ? ' done' : ''}"
-      style="border-color:${active ? color : ''}"
+function renderDayList() {
+  const todayIdx = getTodayIdx();
+  const el = document.getElementById('dayList');
+  el.innerHTML = DAYS.map((day, i) => {
+    const phase = PHASES[day.phase];
+    const [doneCount, total] = countDoneForDay(i);
+    const complete = total > 0 && doneCount === total;
+    const isActive = i === currentDayIdx;
+    const isToday = i === todayIdx;
+    const calDate = getCalDate(day.d);
+    const dateStr = calDate ? formatDate(calDate) : `Day ${day.d}`;
+    return `<button class="day-pill${isActive?' active':''}${isToday?' today-marker':''}"
+      style="border-color:${isActive ? phase.color : ''}"
       onclick="selectDay(${i})">
-      <div class="db-icon">${complete ? '✅' : day.icon}</div>
-      <div class="db-day" style="color:${active ? color : ''}">${day.dayName}</div>
-      <div class="db-type">${day.type === 'rest' ? 'rest' : 'train'}</div>
+      <div class="dp-num">Day ${day.d}</div>
+      <div class="dp-date" style="color:${isActive ? phase.color : ''}">${dateStr}</div>
+      <div class="dp-icon">${complete ? '✅' : day.icon}</div>
+      <div class="dp-phase-dot" style="background:${phase.color}"></div>
     </button>`;
   }).join('');
+  // scroll active into view
+  setTimeout(() => {
+    const active = el.querySelector('.active');
+    if (active) active.scrollIntoView({ inline:'center', behavior:'smooth', block:'nearest' });
+  }, 50);
+}
+
+function renderOverallProgress() {
+  let total = 0, doneCount = 0;
+  DAYS.forEach((_, i) => {
+    const [d, t] = countDoneForDay(i);
+    total += t; doneCount += d;
+  });
+  document.getElementById('overallProgress').textContent =
+    total > 0 ? `${doneCount}/${total} exercises done this cycle` : '';
 }
 
 function renderMain() {
-  const day = getDay();
-  const phase = getPhase();
+  const day = DAYS[currentDayIdx];
+  const phase = PHASES[day.phase];
   const el = document.getElementById('mainContent');
+  const calDate = getCalDate(day.d);
+  const dateLabel = calDate ? ` · ${formatDate(calDate)}` : '';
+
+  // Day header
+  const locChip = day.loc
+    ? `<span class="loc-chip">${day.loc}</span><br>`
+    : '';
 
   if (day.type === 'rest') {
     el.innerHTML = `
+      <div class="day-header" style="border-color:${phase.color}44">
+        <div class="dh-icon">${day.icon}</div>
+        <div class="dh-info">
+          <div class="dh-day-num">Cycle Day ${day.d}${dateLabel}</div>
+          <div class="dh-label">${day.label}</div>
+          <div class="dh-chips">
+            <span class="dh-chip" style="color:${phase.color};border-color:${phase.color}55">${phase.name}</span>
+            <span class="dh-chip" style="color:var(--dim);border-color:var(--border)">Rest</span>
+          </div>
+        </div>
+      </div>
       <div class="rest-card">
         <div class="rc-icon">${day.icon}</div>
         <div class="rc-title">${day.label}</div>
         <div class="rc-note">${day.restNote}</div>
       </div>
-      <ul class="rest-tips">${day.restTips.map(t => `<li>${t}</li>`).join('')}</ul>
-      ${renderParkNotes()}
-    `;
+      <ul class="rest-tips">${day.restTips.map(t=>`<li>${t}</li>`).join('')}</ul>
+      ${renderSessionNotes(day)}`;
     return;
   }
 
-  const [done, total] = countDone(currentWeek, currentDay);
-  const pct = total > 0 ? Math.round(done/total*100) : 0;
-  const locationChip = day.location
-    ? `<span style="display:inline-flex;align-items:center;gap:5px;font-size:10px;padding:3px 10px;border-radius:20px;background:#141420;border:1px solid #2a2a3a;color:#888;margin-bottom:14px;">${day.location}</span>`
-    : '';
+  const [doneCount, total] = countDoneForDay(currentDayIdx);
+  const pct = total > 0 ? Math.round(doneCount/total*100) : 0;
 
   const phasesHtml = day.phases.map((ph, pi) => {
     const isOpen = pi === openPhaseIdx;
-    const exHtml = ph.exercises.map((ex, ei) => {
-      const key = exKey(currentWeek, currentDay, pi, ei);
-      const isDone = !!doneSets[key];
-      return `<div class="ex-card${isDone ? ' done' : ''}" onclick="toggleEx('${key}')">
+    const exHtml = ph.ex.map((ex, ei) => {
+      const key = exKey(currentDayIdx, pi, ei);
+      const isDone = !!done[key];
+      return `<div class="ex-card${isDone?' done':''}" onclick="toggleEx('${key}')">
         ${ex.key && !isDone ? `<span class="key-badge" style="background:${ph.color};color:#080810">KEY</span>` : ''}
         <div class="ex-row">
-          <div class="ex-check">${isDone ? '✓' : ''}</div>
+          <div class="ex-check">${isDone?'✓':''}</div>
           <div style="flex:1">
             <div class="ex-name">${ex.name}</div>
             <div class="ex-chips">
@@ -910,89 +817,115 @@ function renderMain() {
         </div>
       </div>`;
     }).join('');
-
     return `<div class="phase-block">
-      <button class="phase-header${isOpen ? ' open' : ''}" onclick="togglePhase(${pi})"
-        style="${isOpen ? `border-color:${ph.color};` : ''}">
+      <button class="phase-header${isOpen?' open':''}" onclick="togglePhase(${pi})"
+        style="${isOpen?`border-color:${ph.color};`:''}">
         <span class="ph-icon">${ph.icon}</span>
         <div class="ph-label">
-          <div class="ph-name" style="${isOpen ? `color:${ph.color}` : ''}">${ph.name}</div>
-          <div class="ph-meta">${ph.exercises.length} exercises</div>
+          <div class="ph-name" style="${isOpen?`color:${ph.color}`:''}">${ph.name}</div>
+          <div class="ph-meta">${ph.ex.length} exercises</div>
         </div>
         <span class="ph-arrow">›</span>
       </button>
-      <div class="phase-body${isOpen ? ' open' : ''}" style="border-color:${ph.color}44">${exHtml}</div>
+      <div class="phase-body${isOpen?' open':''}" style="border-color:${ph.color}44">${exHtml}</div>
     </div>`;
   }).join('');
 
-  const cycleNotice = day.cycleNote ? `
-    <div class="cycle-notice" style="color:${phase.color};border-color:${phase.borderColor};background:${phase.bg}">
-      <span class="cn-label">↻ Cycle Note</span>${day.cycleNote}
-    </div>` : '';
+  const cycleNotice = day.note
+    ? `<div class="cycle-notice" style="color:${phase.color};border-color:${phase.border};background:${phase.bg}">
+        <span class="cn-label">↻ Cycle Note</span>${day.note}
+       </div>`
+    : '';
 
   el.innerHTML = `
-    <div class="prog-wrap">
-      <div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${day.color}"></div></div>
-      <span class="prog-text">${done}/${total}</span>
+    <div class="day-header" style="border-color:${phase.color}44">
+      <div class="dh-icon">${day.icon}</div>
+      <div class="dh-info">
+        <div class="dh-day-num">Cycle Day ${day.d}${dateLabel}</div>
+        <div class="dh-label">${day.label}</div>
+        <div class="dh-chips">
+          <span class="dh-chip" style="color:${phase.color};border-color:${phase.color}55">${phase.name}</span>
+          ${day.loc ? `<span class="dh-chip" style="color:var(--dim);border-color:var(--border)">${day.loc}</span>` : ''}
+        </div>
+      </div>
     </div>
-    ${locationChip}
+    <div class="prog-wrap">
+      <div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${phase.color}"></div></div>
+      <span class="prog-text">${doneCount}/${total}</span>
+    </div>
     ${cycleNotice}
     ${phasesHtml}
-    ${renderParkNotes()}
-  `;
+    ${renderSessionNotes(day)}`;
 }
 
-function renderParkNotes() {
-  const day = getDay();
-  const isHome = day.location && day.location.includes('Home');
-  if (isHome) {
-    return `<div class="park-notes">
-      <div class="pn-title">Home Session Notes</div>
-      <div class="pn-item"><span>🏠</span><span>No equipment needed — mat, floor, a wall, and a sturdy table.</span></div>
-      <div class="pn-item"><span>🚪</span><span>Doorway rows: use a solid interior door, not a hollow-core one.</span></div>
-      <div class="pn-item"><span>🧘</span><span>Yoga mat optional — carpet or a folded blanket works fine.</span></div>
-      <div class="pn-item"><span>📈</span><span>Use this week to recover — your body is still adapting from park sessions.</span></div>
-    </div>`;
-  }
-  return `<div class="park-notes">
-    <div class="pn-title">Park Notes</div>
-    <div class="pn-item"><span>🧤</span><span>Gloves or chalk if bars chew your hands early on.</span></div>
-    <div class="pn-item"><span>📈</span><span>Track reps each week. Beat follicular-phase numbers next month.</span></div>
+function renderSessionNotes(day) {
+  const isHome = day.loc && day.loc.includes('Home');
+  const isOutdoor = day.loc && day.loc.includes('Outdoor');
+  if (isHome) return `<div class="session-notes">
+    <div class="sn-title">Home Session Notes</div>
+    <div class="sn-item"><span>🏠</span><span>No equipment needed — mat, floor, a wall, and a sturdy table.</span></div>
+    <div class="sn-item"><span>🚪</span><span>Towel rows: use a solid interior door, not hollow-core.</span></div>
+    <div class="sn-item"><span>🧘</span><span>Yoga mat optional — carpet or a folded blanket works fine.</span></div>
+    <div class="sn-item"><span>💧</span><span>Bring water and have it next to your mat.</span></div>
+  </div>`;
+  if (isOutdoor) return `<div class="session-notes">
+    <div class="sn-title">Outdoor Gym Notes</div>
+    <div class="sn-item"><span>🧤</span><span>Gloves or chalk if bars chew your hands early on.</span></div>
+    <div class="sn-item"><span>💧</span><span>Bring water — no fountain on site.</span></div>
+    <div class="sn-item"><span>📈</span><span>Track your reps. Beat your follicular-phase numbers next cycle.</span></div>
+    <div class="sn-item"><span>🌿</span><span>Shaded spot available — use it on warmer days.</span></div>
+  </div>`;
+  return `<div class="session-notes">
+    <div class="sn-title">Rest Day Notes</div>
+    <div class="sn-item"><span>💤</span><span>Sleep and protein are your best recovery tools.</span></div>
+    <div class="sn-item"><span>🚶</span><span>A short walk is always fine — never mandatory.</span></div>
   </div>`;
 }
 
-function render() {
-  renderWeekTabs();
-  renderPhaseBanner();
-  renderDayStrip();
-  renderMain();
-}
-
-// ─── INTERACTIONS ─────────────────────────────────────────────────────────────
-function selectWeek(i) { currentWeek = i; currentDay = 0; openPhaseIdx = 0; render(); }
-function selectDay(i) { currentDay = i; openPhaseIdx = 0; render(); }
+// ── INTERACTIONS ─────────────────────────────────────────────────────────────
+function selectDay(i) { currentDayIdx = i; openPhaseIdx = 0; renderPhaseBanner(); renderDayList(); renderMain(); }
 function togglePhase(i) { openPhaseIdx = openPhaseIdx === i ? null : i; renderMain(); }
 function toggleEx(key) {
-  doneSets[key] = !doneSets[key];
+  done[key] = !done[key];
   saveState();
-  renderDayStrip();
+  renderDayList();
   renderMain();
+  renderOverallProgress();
 }
-
-// ─── INIT ─────────────────────────────────────────────────────────────────────
-render();
-
+function onDateChange() {
+  cycleStart = document.getElementById('cycleStartInput').value;
+  saveCycleStart(cycleStart);
+  // jump to today if within cycle
+  const todayIdx = getTodayIdx();
+  if (todayIdx >= 0) { currentDayIdx = todayIdx; openPhaseIdx = 0; }
+  renderAll();
+}
+function setToday() {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  const dd = String(today.getDate()).padStart(2,'0');
+  cycleStart = `${yyyy}-${mm}-${dd}`;
+  document.getElementById('cycleStartInput').value = cycleStart;
+  saveCycleStart(cycleStart);
+  currentDayIdx = 0; openPhaseIdx = 0;
+  renderAll();
+}
 function toggleTheme() {
   const isLight = document.body.classList.toggle('light');
-  document.getElementById('themeBtn').textContent = isLight ? '🌑 dark' : '🌙 dark';
+  document.getElementById('themeBtn').textContent = isLight ? '🌑 light' : '🌙 dark';
   localStorage.setItem('theme', isLight ? 'light' : 'dark');
 }
-// Restore on load
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
 if (localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light');
-  document.getElementById('themeBtn').textContent = '🌑 dark';
+  document.getElementById('themeBtn').textContent = '🌑 light';
 }
+// Auto-jump to today if within current cycle
+const todayIdx = getTodayIdx();
+if (todayIdx >= 0) currentDayIdx = todayIdx;
+renderAll();
 </script>
 </body>
 </html>
-
